@@ -1,0 +1,314 @@
+
+/* 
+    Created on : 25/12/2018, 13:08:40
+    Author     : Felipe
+*/
+
+#m-bksec{
+    display: none;
+}
+a:visited, a:after, a:before,a:link{
+   color:#000 !important;
+   
+}
+#corpo{
+    position: relative; 
+    float:bottom;
+    margin-top: 2.7em;
+    width:85%;
+    left:7.5%;
+    background-color: #fff;
+}
+
+input[type=checkbox]#tela-checkbox-d{
+    display:none;
+}
+
+input[type=checkbox]#tela-checkbox-d + label{
+    position: relative; 
+    float:left;
+    cursor: pointer;
+    display:inline-block;
+    height:25px;
+    padding:0em 1.2em 0em 0em;
+    margin:auto;
+    background-image: url('tela_25x50.png');
+    background-repeat:no-repeat;
+    background-position:0 0;
+    transition: all ease .1s;
+}
+
+
+
+input[type=checkbox]#tela-checkbox-d:checked + label{
+    background-position:0 0px;
+}
+
+
+
+input[type=checkbox]#tela-checkbox-d:checked + label {
+    background-position:0 -25px;
+}
+
+body{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    top: 0px;
+    left:0px;
+    width:100%;
+    max-width:100.01%;
+    background-color:#cfcfcf; 
+    font-family: aegean;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+#m-bk{
+    position:fixed;
+    top:0em;
+    display: inline-block;
+    width:100%;
+    /*border-bottom: solid 1px #000;*/
+    background-color: #55d1ff;
+    border-bottom: 5px solid #08bdff;
+    z-index: 888;
+}
+
+.item-p-m{
+    position: relative;
+    bottom: -7px;
+    width: 2em;
+}
+.img-t-l{
+
+    width: 1.2em;
+
+}
+.item-p, .item-s, .item-t {
+    position: relative;
+    display: block;
+    float:left;
+
+}
+
+.item-p{
+    width:15%;
+    left:1em;
+}
+
+.item-s{
+    width:65%;
+    left:25%;
+    margin-left: -10%;
+
+    bottom: 0px;
+}
+
+.item-t{
+    position: relative;
+    width: auto;
+    margin-right: 5%; 
+    float: right;
+}
+
+
+li.item-p-l, li.item-s-l, li.item-t-l {
+    display: block;
+    float:left;
+    margin: 16.8px 16px 8px 16px;
+
+}
+.ativo{
+    margin: 13.8px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-top: 3px solid #08bdff;
+    border-bottom: 3px solid #08bdff;
+    background-color: #0089bb;
+    color:#fff;
+}
+
+.item-s-l:hover, .item-s-lsec:hover, .ativo-l:hover{
+    margin: 13.8px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-top: 3px solid #0ac;
+    border-bottom: 3px solid #0ac;
+    background-color: #19c;
+    color:#fff;
+    transition:all ease 0.3s;
+}
+
+
+.ativo-l{
+    margin: 13.8px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-top: 3px solid #08bdff;
+    border-bottom: 3px solid #08bdff;
+    background-color: #5df;
+}
+
+
+
+
+
+
+@media screen and (max-width:740px){
+    input[type=checkbox]:checked{
+        .item-ssec {
+            display: none !important;
+        }
+    }
+    #corpo{
+        position: relative; 
+        margin-top:2em;
+        z-index: -1;
+    }
+
+    #m-bk{
+        display: none;
+    }
+#m-bksec{
+    position:fixed;
+    top:0;
+    display: block;
+    width:100%;
+    /*border-bottom: solid 1px #000;*/
+    background-color: #55d1ff;
+    border-bottom: 5px solid #08bdff;
+    position:fixed;
+    height: 1.3em;
+    /*display: none !important;*/
+}
+.item-p{
+    position: relative; 
+    float:left;
+}
+
+/*-----------------------*/
+
+.item-p-msec{
+    position: relative;
+    bottom: -4px;
+    width: 1.4em;
+}
+.img-t-lsec{
+
+    width: 1.2em;
+
+}
+.item-psec, .item-ssec, .item-tsec {
+    position: relative;
+    display: block;
+    float:left;
+
+}
+
+.item-psec{
+    
+    width:15%;
+    left:1em;
+}
+/*-----itens do menu mobile-----*/
+
+#item-ssec{
+    position: fixed;
+    display: none;
+    margin-top: 1.6em;
+    right: 0em;
+    float:right;
+    /*display: none;*/
+    width:99%;
+    background-color: #f5f5f5;
+    /*left:25%;*/
+    z-index: 999;
+    /*bottom: 0px;*/
+    
+}
+
+li.item-p-lsec, li.item-s-lsec, li.item-t-lsec {
+    position: relative;
+    display: block;
+    float:bottom;
+    margin: 16.8px 16px 8px 16px;
+
+}
+
+/*-----fim itens do menu-----*/
+
+
+
+
+
+
+/*-----------------------*/
+input[type=checkbox]#tela-checkbox, input[type=checkbox]#campo-checkbox{
+    display:none;
+}
+
+
+input[type=checkbox]#tela-checkbox + label{
+    position: relative; 
+    float:right;
+    cursor: pointer;
+    display:inline-block;
+    top:3px;
+    height:25px;
+    padding:0 0 0 25px;
+    margin:0 10px 0 0;
+    background-image: url('tela_25x50.png');
+    background-repeat:no-repeat;
+    background-position:0 0;
+    transition: all ease .08s;
+}
+
+
+
+
+
+input[type=checkbox]#campo-checkbox + label{
+    position: relative; 
+    top:3px;
+    float:right;
+    cursor: pointer;
+    display:inline-block;
+    height:25px;
+    padding:0 0 0 25px;
+    margin:0 10px 0 0;
+    background-image: url('menu.png');
+    background-repeat:no-repeat;
+    background-position:0 0;
+    transition: all ease .03s;
+}
+
+input[type=checkbox]#campo-checkbox:checked + label{
+    background-position:0 0px;
+}
+
+
+
+input[type=checkbox]#campo-checkbox:checked + label {
+    background-position:0 -25px;
+}
+
+
+input[type=checkbox]#tela-checkbox:checked + label{
+    background-position:0 0px;
+}
+
+
+
+input[type=checkbox]#tela-checkbox:checked + label {
+    background-position:0 -25px;
+}
+
+}
+
+
+@media screen and (max-width: 970px) {
+
+    .item-p{
+        width:1% !important;
+    }
+
+
+}
