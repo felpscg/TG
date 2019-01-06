@@ -1,0 +1,51 @@
+
+/* 
+    Created on : 03/01/2019, 23:36:42
+    Author     : Felipe
+*/
+.campo{
+    position: relative;
+    max-width:90%;
+}
+.nome-campo{
+    position: relative;
+    display: block;
+    float:left;
+    width: 30%;
+    text-align: right;
+}
+.item-campo{
+    float:right;
+    position: relative;
+    display: block;
+    width:65%;
+}
+:root{
+    --espacamento-campo-top:0.2em;
+    --espacamento-campo-bottom:0.2em;
+    --margem-campo-top:1em;
+    --margem-campo-bottom:1em;
+}
+
+.nome-campo p{
+    position: relative;
+    margin-top: var(--margem-campo-top);
+    margin-bottom: var(--margem-campo-bottom);
+
+    padding-top: var(--espacamento-campo);
+    padding-bottom: var(--espacamento-campo-bottom);
+    color:#000 !important;
+    height: 1em;
+}
+.item-campo input{
+    position: relative;
+    height: 2.1em;
+    display: block;
+    margin-top: var(--margem-campo-top);
+    margin-bottom: var(--margem-campo-bottom);
+    padding-top: var(--espacamento-campo);
+    padding-bottom: var(--espacamento-campo-bottom);
+    color: #001321;
+    background-color: #d4d4d4;
+    
+}

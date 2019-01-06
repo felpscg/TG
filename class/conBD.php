@@ -12,6 +12,9 @@ class conBD {
     private $key = "Felipe@CG";
     private $host = "localhost";
     private $nameDb = "tg";
+    function testeConstruct() {
+        $conexao = $this->conectarBD("Erro interno");
+    }
 
     function getUser() {
         return $this->user;
@@ -38,10 +41,10 @@ class conBD {
         $key = $this->getKey();
         $host = $this->getHost();
         $nameDb = $this->getNameDb();
-        mysqli_connect($host, $user, $key, $nameDb) or die($falha);
+        return mysqli_connect($host, $user, $key, $nameDb) or die($falha);
     }
 
-    function finalizar($linkBD) {
+    function finalizarBD($linkBD) {
         mysqli_close($linkBD);
     }
 

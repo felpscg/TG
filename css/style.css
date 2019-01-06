@@ -3,9 +3,64 @@
     Author     : Felipe
     Descrição
         Estilo básico para o template do visual
+*Com problema
+
 */
-@import url(font.css);
-@import url(mobile.css);
+
+/*@import url(font.css);*/
+/*@import url(mobile.css);*/
+/*@import url(campo.css);*/
+@import url(menu.css);
+
+
+
+
+#m-bksec{
+    display: none;
+}
+a:visited, a:after, a:before,a:link{
+    color:#000 !important;
+
+}
+#corpo{
+    position: relative; 
+    float:bottom;
+    margin-top: 2.9em;
+    width:85%;
+    left:7.5%;
+    background-color: #fff;
+}
+
+input[type=checkbox]#tela-checkbox-d{
+    display:none;
+}
+
+input[type=checkbox]#tela-checkbox-d + label{
+    position: relative; 
+    float:left;
+    cursor: pointer;
+    display:inline-block;
+    height:25px;
+    padding:0em 1.2em 0em 0em;
+    margin:auto;
+    background-image: url('./../img/tela_25x50.png');
+    background-repeat:no-repeat;
+    background-position:0 0;
+    transition: all ease .1s;
+}
+
+
+
+input[type=checkbox]#tela-checkbox-d:checked + label{
+    background-position:0 0px;
+}
+
+
+
+input[type=checkbox]#tela-checkbox-d:checked + label {
+    background-position:0 -25px;
+}
+
 body{
     position: relative;
     margin: 0px;
@@ -14,18 +69,21 @@ body{
     left:0px;
     width:100%;
     max-width:100.01%;
-    background-color:#fff; 
+    background-color:#cfcfcf; 
     font-family: aegean;
     font-size: 1.5em;
     font-weight: 500;
 }
+
 #m-bk{
-    position:relative;
+    position:fixed;
+    top:0em;
     display: inline-block;
     width:100%;
     /*border-bottom: solid 1px #000;*/
     background-color: #55d1ff;
     border-bottom: 5px solid #08bdff;
+    z-index: 888;
 }
 
 .item-p-m{
@@ -34,15 +92,15 @@ body{
     width: 2em;
 }
 .img-t-l{
-    
+
     width: 1.2em;
-    
+
 }
 .item-p, .item-s, .item-t {
     position: relative;
     display: block;
     float:left;
-    
+
 }
 
 .item-p{
@@ -78,7 +136,20 @@ li.item-p-l, li.item-s-l, li.item-t-l {
     border-top: 3px solid #08bdff;
     border-bottom: 3px solid #08bdff;
     background-color: #0089bb;
+    color:#fff;
 }
+
+.item-s-l:hover, .item-s-lsec:hover, .ativo-l:hover{
+    margin: 13.8px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-top: 3px solid #0ac;
+    border-bottom: 3px solid #0ac;
+    background-color: #19c;
+    color:#fff;
+    transition:all ease 0.3s;
+}
+
+
 .ativo-l{
     margin: 13.8px 4px 8px 6px !important;
     padding: 0px 12px 0px 10px;
@@ -86,3 +157,4 @@ li.item-p-l, li.item-s-l, li.item-t-l {
     border-bottom: 3px solid #08bdff;
     background-color: #5df;
 }
+
