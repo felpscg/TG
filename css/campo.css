@@ -3,6 +3,12 @@
     Created on : 03/01/2019, 23:36:42
     Author     : Felipe
 */
+fieldset{
+    margin-left: -1.85px;
+    margin-right: -1.85px;
+    border:solid #111 1.85px;
+}
+
 .campo{
     position: relative;
     max-width:90%;
@@ -25,7 +31,32 @@
     --espacamento-campo-bottom:0.2em;
     --margem-campo-top:1em;
     --margem-campo-bottom:1em;
+    
 }
+
+
+input[type=button] {
+    position:relative;
+    top:1.25em;
+    color:#dfdfdf;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top:3px solid #08bdff;
+    border-bottom:3px solid #08bdff;
+    background-color: #0089bb;
+    font-family: aegean;
+    font-size: 0.9em; 
+} 
+input[type=button]:hover {
+    color:#dfdfdf;
+    border-top:3px solid #0089bb;
+    border-bottom:3px solid #0089bb;
+    background-color: #08bdff;
+    cursor: pointer;
+}
+/*#55d1ff;
+border-bottom: 5px solid #08bdff;*/
+
 
 .nome-campo p{
     position: relative;
@@ -41,6 +72,7 @@
     position: relative;
     height: 2.1em;
     display: block;
+    
     margin-top: var(--margem-campo-top);
     margin-bottom: var(--margem-campo-bottom);
     padding-top: var(--espacamento-campo);

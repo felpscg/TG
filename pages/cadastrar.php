@@ -13,7 +13,7 @@ $menu = new menuPrincipal(1);
 <?php
 $conteudo = new cadastrar();
 ?>
-<div id='corpo' >
+<!--<div id='corpo' >
     <div>
         <fieldset>
             <legend>Cadastrar</legend>
@@ -141,7 +141,7 @@ $conteudo = new cadastrar();
 
         </fieldset>
     </div>
-</div>
+</div>-->
 <!--Ródape-->
 <?php
 $rodape = new htmlFooter();

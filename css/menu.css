@@ -5,6 +5,8 @@
 */
 @import url(font.css);
 @import url(campo.css);
+@import url(rodape.css);
+
 #m-bksec{
     display: none;
 }
@@ -16,8 +18,8 @@ a:visited, a:after, a:before,a:link{
     position: relative; 
     float:bottom;
     margin-top: 2.9em;
-    width:85%;
-    left:7.5%;
+    width:90%;
+    left:5%;
     background-color: #fff;
 }
 
@@ -58,7 +60,7 @@ body{
     top: 0px;
     left:0px;
     width:100%;
-    max-width:100.01%;
+    /*max-width:100.01%;*/
     background-color:#cfcfcf; 
     font-family: aegean;
     font-size: 1.5em;

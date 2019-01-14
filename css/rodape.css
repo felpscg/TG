@@ -1,0 +1,30 @@
+footer{
+    position: relative;
+    top:-6em;
+    background-image: url('../img/rodape.png');
+    width: 100%;
+    height: 150px;
+    background-repeat:no-repeat;
+    
+}
+/*footer{
+    position: fixed !important;
+    margin-top: 37%;
+    background-image: url('../img/rodape.png');
+    width: 100%;
+    height: 150px;
+    background-repeat:no-repeat;
+    z-index: 111;
+}*/
+/*#bordas{
+    position:fixed;
+    top:-5px;
+    background-image: url('../img/bordas.png');
+    background-size: 100% 100%;
+    width: 99.99%;
+    max-width: 100% !important;
+    height: 101%;
+    background-repeat:no-repeat;
+    
+}*/
+

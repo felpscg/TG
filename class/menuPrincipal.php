@@ -99,7 +99,7 @@ class menuPrincipal {
         
         $conteudoMenu = "<div id='m-bk'>\n" .
                 "<div class='item-p'>\n" .
-                "<a href='$link[0]'><img class='item-p-m' src='$imagem'/></a>\n" .
+                "<a href='$link[0]'><img class='item-p-m' src='$imagem'/><span style='font-size:1.7em'>Parking</span></a>\n" .
                 "</div>\n" .
                 "<div class='item-s'>\n" .
                 "<a href='$link[0]'><li class='item-s-l $ativo[0]' >$item[0]</li></a>\n" .

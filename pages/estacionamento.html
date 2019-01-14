@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @import url('../css/font.css');
+            body{
+                width: 1358px !important;
+                font-family: aegean;
+            }
+            
+            #legenda{
+                position: relative;
+                margin-top: 2em;
+                top:0em;
+                width: 80%;
+                left: 10%;
+                /*border: solid 1px #000;*/
+            }
+            
+            .legenda{
+                position: relative;
+                display: inline-block;
+            }
+            
+            .livre{
+                background-image: url('../img/livre.png');
+                background-repeat: no-repeat;
+            }
+            
+            .reservado{
+                background-image: url('../img/reservado.png');
+                background-repeat: no-repeat;
+            }
+            
+            .ocupado{
+                background-image: url('../img/ocupado.png');
+                background-repeat: no-repeat;
+            }
+            
+            .m-reserva{
+                background-image: url('../img/minhareserva.png');
+                background-repeat: no-repeat;
+            }
+
+            .livre, .ocupado, .reservado, .m-reserva{
+                margin-top: 0em;
+                margin-left: 1em;
+                top: 0em;
+                vertical-align: top;
+                position: relative;
+                display: inline-table;
+                width: 15%;
+                min-height: 50px;
+                height: 80px;
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+            }
+            
+            .legenda span{
+                position:relative;
+                width: 80%;
+                margin-left: -30%; 
+                left:40%;
+                bottom:1.5em;
+                color:#000;
+                font-size: 1.3em;
+            }
+            
+            #problema{
+                position: fixed;
+                bottom: 5%;
+                right: 5%;
+            }
+            
+            #estacionamento{
+                position: relative;
+                margin-top: 2em;
+                border-left: solid 3px #0ac;
+                border-right: solid 3px #0ac;
+                width: 80%;
+                left: 10%;
+                /*background-color:  #000;*/
+            }
+            
+            .vaga{
+                position: relative;
+                margin-top: 0em;
+                top:0em;
+                /*border: solid 1px #000;*/
+                /*padding: 0.5em;*/
+            }
+            
+            #estacionamento .vaga{
+                background-color: #f0f0f0;
+                overflow: hidden;
+                vertical-align: middle;
+                position: relative;
+                display: inline-table;
+                width: 4.95%;
+                min-height: 120px;
+                height: 140px;
+                /*                transform: rotate(90deg);*/
+                background-size: auto 100%;
+                /*border: 1px solid #822;*/
+                border-left: solid 2px #0ac; 
+                border-right: solid 2px #0ac; 
+                padding: 10px;
+            }
+
+            #estacionamento #bloco-p .livre{
+                background-image: url('../img/livre-deg.png');
+                background-repeat: no-repeat;
+                /*background-color: #000 !important;*/
+            }
+            
+            #estacionamento #bloco-p .reservado{
+                background-image: url('../img/reservado-deg.png');
+                background-repeat: no-repeat;
+            }
+            
+            #estacionamento #bloco-p .ocupado{
+                background-image: url('../img/ocupado-deg.png');
+                background-repeat: no-repeat;
+            }
+            
+            #estacionamento #bloco-p .m-reserva{
+                background-image: url('../img/minhareserva-deg.png');
+                background-repeat: no-repeat;
+            }
+
+            #estacionamento #bloco-p span{
+                position: relative;
+                left:35%;
+            }
+            #estacionamento #bloco-t span{
+                position: relative;
+                color:#FFF;
+                left:35%;
+                top:7em;
+                padding-left: 2px;
+                padding-right: 3px;
+                background-color: #000;
+                border-radius: 0.2em;
+            }
+            #estacionamento span{
+                color:#FFF;
+                padding-left: 1px;
+                padding-right: 3px;
+                background-color: #000;
+                border-radius: 0.2em;
+            }
+            
+            #bloco-p{
+                border-top: solid 3px #0ac;
+            }
+            
+            #bloco-s{
+                height: 10em;
+            }
+            
+            #bloco-t{
+                border-bottom: solid 3px #0ac;
+                /*background-color: #000;*/
+            }
+
+            #estacionamento #bloco-t .livre{
+                background-image: url('../img/livre-deg-.png');
+                background-repeat: no-repeat;
+                /*background-color: #000 !important;*/
+            }
+
+            #estacionamento #bloco-t .reservado{
+                background-image: url('../img/reservado-deg-.png');
+                background-repeat: no-repeat;
+            }
+
+            #estacionamento #bloco-t .ocupado{
+                background-image: url('../img/ocupado-deg-.png');
+                background-repeat: no-repeat;
+            }
+
+            #estacionamento #bloco-t .m-reserva{
+                background-image: url('../img/minhareserva-deg-.png');
+                background-repeat: no-repeat;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id='legenda'>
+            <div class='legenda livre'>
+                <span>Livre</span>
+            </div>
+            <div class='legenda reservado'>
+                <span>Reservado</span>
+            </div>
+            <div class='legenda ocupado'>
+                <span>Ocupado</span>
+            </div>
+            <div class='legenda m-reserva'>
+                <span>Minha Reserva</span>
+            </div>
+        </div>
+        <div id='estacionamento'>
+            <div id='bloco-p'>
+                <div class='vaga livre'><span>1</span></div>
+                <div class='vaga ocupado'><span>2</span></div>
+                <div class='vaga m-reserva'><span>3</span></div>
+                <div class='vaga reservado'><span>4</span></div>
+                <div class='vaga ocupado'><span>5</span></div>
+                <div class='vaga livre'><span>6</span></div>
+                <div class='vaga ocupado'><span>7</span></div>
+                <div class='vaga livre'><span>8</span></div>
+                <div class='vaga reservado'><span>9</span></div>
+                <div class='vaga livre'><span>10</span></div>
+                <div class='vaga ocupado'><span>11</span></div>
+
+            </div>
+            <div id='bloco-s'>
+
+            </div>
+            <div id='bloco-t'>
+                <div class='vaga livre'><span>12</span></div>
+                <div class='vaga reservado'><span>13</span></div>
+                <div class='vaga reservado'><span>14</span></div>
+                <div class='vaga ocupado'><span>15</span></div>
+                <div class='vaga livre'><span>16</span></div>
+                <div class='vaga reservado'><span>17</span></div>
+                <div class='vaga ocupado'><span>18</span></div>
+                <div class='vaga livre'><span>19</span></div>
+                <div class='vaga'></div>
+                <div class='vaga'></div>
+                <div class='vaga'></div>
+
+            </div>
+        </div>
+        <div id='problema'><span>Relatar Problema</span></div>
+    </body>
+</html>
