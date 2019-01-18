@@ -26,7 +26,10 @@ $conteudo = new login();
             <div class='item-campo'>
                 <p><input type='text' name='email' /></p>
                 <p><input type='text' name='senha' /></p>
+                
             </div>
+            <p><input type="button" value="Cadastrar"/>
+                <input type="button" value='Logar'/></p>
         </div>
     </fieldset>
 

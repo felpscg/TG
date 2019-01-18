@@ -108,14 +108,17 @@ class vagas {
                 left: 0%;
                 margin-left:-2px;
                 /*background-color:  #000;*/
+                text-align: center;
             }
             
             .vaga{
                 position: relative;
                 margin-top: 0em;
                 top:0em;
+                
                 /*border: solid 1px #000;*/
                 /*padding: 0.5em;*/
+                text-align: center;
             }
             
             #estacionamento .vaga{
@@ -125,14 +128,15 @@ class vagas {
                 position: relative;
                 display: inline-table;
                 width: 4.95%;
+                min-width: 4.94%;
                 min-height: 120px;
                 height: 140px;
-                /*                transform: rotate(90deg);*/
+                /*transform: rotate(90deg);*/
                 background-size: auto 100%;
                 /*border: 1px solid #822;*/
                 border-left: solid 2px #0ac; 
                 border-right: solid 2px #0ac; 
-                padding: 7.2px;
+                padding: 0px 0.55em 0px 0px;
             }
 
             #estacionamento #bloco-p .livre{
@@ -158,30 +162,37 @@ class vagas {
 
             #estacionamento #bloco-p span{
                 position: relative;
-                left:35%;
+                /*left:35%;*/
+                
             }
             #estacionamento #bloco-t span{
                 position: relative;
                 color:#FFF;
-                left:27%;
-                top:5.6em;
-                padding-left: 2px;
-                padding-right: 3px;
+                /*left:27%;*/
+                top:2.6em;
+                padding-left: 1px;
+                padding-right: 2px;
                 background-color: #000;
                 border-radius: 0.2em;
             }
             #estacionamento span{
                 color:#FFF;
                 padding-left: 1px;
-                padding-right: 3px;
+                padding-right: 2px;
                 background-color: #000;
                 border-radius: 0.2em;
                 z-index:1;
-                font-size: 0.8em;
+                font-size: 0.7em;
+                
+
+   
             }
             
             #bloco-p{
+            position:relative;
                 border-top: solid 3px #0ac;
+                margin-left:0px !important;
+                left:0px !important;
             }
             
             #bloco-s{
@@ -190,6 +201,8 @@ class vagas {
             
             #bloco-t{
                 border-bottom: solid 3px #0ac;
+                margin-left:0px !important;
+                left:0px !important;
                 /*background-color: #000;*/
             }
 
@@ -213,6 +226,11 @@ class vagas {
                 background-image: url('../img/minhareserva-deg-.png');
                 background-repeat: no-repeat;
             }
+            #estacionamento #bloco-t .nulo{
+                background-image: url('../img/nulo.png');
+                background-repeat: no-repeat;
+            }            
+
             #espaco{
             height: 0.1em;
 }
@@ -235,34 +253,35 @@ class vagas {
             </div>
             <div id='estacionamento'>
                 <div id='bloco-p'>
-                    <div class='vaga livre'><span>1</span></div>
-                    <div class='vaga ocupado'><span>2</span></div>
-                    <div class='vaga m-reserva'><span>3</span></div>
-                    <div class='vaga reservado'><span>4</span></div>
-                    <div class='vaga ocupado'><span>5</span></div>
-                    <div class='vaga livre'><span>6</span></div>
-                    <div class='vaga ocupado'><span>7</span></div>
-                    <div class='vaga livre'><span>8</span></div>
-                    <div class='vaga reservado'><span>9</span></div>
-                    <div class='vaga livre'><span>10</span></div>
-                    <div class='vaga ocupado'><span>11</span></div>
+                    <div class='vaga livre'><span>1</span><br><span>E: - </span><br><span>S: - </span></div>
+                    <div class='vaga ocupado'><span>2</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
+                    <div class='vaga m-reserva'><span>3</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
+                    <div class='vaga reservado'><span>4</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
+                    <div class='vaga ocupado'><span>5</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
+                    <div class='vaga livre'><span>6</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
+                    <div class='vaga ocupado'><span>7</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
+                    <div class='vaga livre'><span>8</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
+                    <div class='vaga reservado'><span>9</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
+                    <div class='vaga livre'><span>10</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
+                    <div class='vaga ocupado'><span>11</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
 
                 </div>
                 <div id='bloco-s'>
 
                 </div>
                 <div id='bloco-t'>
-                    <div class='vaga livre'><span>12</span></div>
-                    <div class='vaga reservado'><span>13</span></div>
-                    <div class='vaga reservado'><span>14</span></div>
-                    <div class='vaga ocupado'><span>15</span></div>
-                    <div class='vaga livre'><span>16</span></div>
-                    <div class='vaga reservado'><span>17</span></div>
-                    <div class='vaga ocupado'><span>18</span></div>
-                    <div class='vaga livre'><span>19</span></div>
-                    <div class='vaga'></div>
-                    <div class='vaga'></div>
-                    <div class='vaga'></div>
+                    <input type='checkbox' class='cbvaga' name='vaga' value=1><div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>12</span></div></input>
+                    <div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>13</span></div>
+                    <div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>14</span></div>
+                    <div class='vaga ocupado'><span>E:12:00</span><br><span>S:15:00</span><br><span>15</span></div>
+                    <div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>16</span></div>
+                    <div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>17</span></div>
+                    <div class='vaga ocupado'><span>E:12:00</span><br><span>S:15:00</span><br><span>18</span></div>
+                    <div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>19</span></div>
+                    <div class='vaga nulo'></div>
+                    <div class='vaga nulo'></div>
+                    <div class='vaga nulo'></div>
+                    <div class='vaga nulo'></div>
 
                 </div>
             </div>

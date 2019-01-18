@@ -41,7 +41,8 @@ class conBD {
         $key = $this->getKey();
         $host = $this->getHost();
         $nameDb = $this->getNameDb();
-        return mysqli_connect($host, $user, $key, $nameDb) or die($falha);
+        $con = mysqli_connect($host, $user, $key, $nameDb) or die('null');
+        return $con;
     }
 
     function finalizarBD($linkBD) {
