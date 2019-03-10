@@ -11,232 +11,232 @@
         <script charset='utf-8' type='text/javascript' src='../js/menu.js' defer='defer'></script>
         <script charset='utf-8' type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' defer='defer'></script>
         <style>
-                @import url('../css/font.css');
-                body{
-                    width: 1358px !important;
-                    font-family: aegean;
-                }
+            @import url('../css/font.css');
+            body{
+                width: 1358px !important;
+                font-family: aegean;
+            }
 
-                #legenda{
-                    position: relative;
-                    margin-top: 2em;
-                    top:0em;
-                    width: 100%;
-                    left: 10%;
-                    /*border: solid 1px #000;*/
-                }
+            #legenda{
+                position: relative;
+                margin-top: 2em;
+                top:0em;
+                width: 100%;
+                left: 10%;
+                /*border: solid 1px #000;*/
+            }
 
-                .legenda{
-                    position: relative;
-                    display: inline-block;
-                }
+            .legenda{
+                position: relative;
+                display: inline-block;
+            }
 
-                .livre{
-                    background-image: url('../img/livre.png');
-                    background-repeat: no-repeat;
-                }
+            .livre{
+                background-image: url('../img/livre.png');
+                background-repeat: no-repeat;
+            }
 
-                .reservado{
-                    background-image: url('../img/reservado.png');
-                    background-repeat: no-repeat;
-                }
+            .reservado{
+                background-image: url('../img/reservado.png');
+                background-repeat: no-repeat;
+            }
 
-                .ocupado{
-                    background-image: url('../img/ocupado.png');
-                    background-repeat: no-repeat;
-                }
+            .ocupado{
+                background-image: url('../img/ocupado.png');
+                background-repeat: no-repeat;
+            }
 
-                .m-reserva{
-                    background-image: url('../img/minhareserva.png');
-                    background-repeat: no-repeat;
-                }
+            .m-reserva{
+                background-image: url('../img/minhareserva.png');
+                background-repeat: no-repeat;
+            }
 
-                .livre, .ocupado, .reservado, .m-reserva{
-                    margin-top: 0em;
-                    margin-left: 1em;
-                    top: 0em;
-                    vertical-align: top;
-                    position: relative;
-                    display: inline-table;
-                    width: 15%;
-                    min-height: 80px;
-                    height: 90px;
-                    background-repeat: no-repeat;
-                    background-size: 100% auto;
-                }
+            .livre, .ocupado, .reservado, .m-reserva{
+                margin-top: 0em;
+                margin-left: 1em;
+                top: 0em;
+                vertical-align: top;
+                position: relative;
+                display: inline-table;
+                width: 15%;
+                min-height: 80px;
+                height: 90px;
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+            }
 
-                .legenda span{
-                    position:relative;
-                    width: 80%;
-                    margin-left: -30%; 
-                    left:40%;
-                    bottom:1.5em;
-                    color:#000;
-                    font-size: 0.8em;
-                }
+            .legenda span{
+                position:relative;
+                width: 80%;
+                margin-left: -30%; 
+                left:40%;
+                bottom:1.5em;
+                color:#000;
+                font-size: 0.8em;
+            }
 
-                #problema{
-                    position: fixed;
-                    bottom: 5%;
-                    right: 5%;
-                    margin: 13.8px 4px 8px 6px !important;
-                    padding: 0px 12px 0px 10px;
-                    border-top: 3px solid #08bdff;
-                    border-bottom: 3px solid #08bdff;
-                    background-color: #0089bb;
-                    color:#fff;
-                    z-index:777;
-                    cursor:pointer;
-                }
+            #problema{
+                position: fixed;
+                bottom: 5%;
+                right: 5%;
+                margin: 13.8px 4px 8px 6px !important;
+                padding: 0px 12px 0px 10px;
+                border-top: 3px solid #08bdff;
+                border-bottom: 3px solid #08bdff;
+                background-color: #0089bb;
+                color:#fff;
+                z-index:777;
+                cursor:pointer;
+            }
 
-                #problema:hover{
-                    margin: 13.8px 4px 8px 6px !important;
-                    padding: 0px 12px 0px 10px;
-                    border-top: 3px solid #0ac;
-                    border-bottom: 3px solid #0ac;
-                    background-color: #19c;
-                    color:#dfdfdf;
-                    transition:all ease 0.3s;
-                }
-
-
-                #estacionamento{
-                    position: relative;
-                    margin-top: 2em;
-                    border-left: solid 3px #0ac;
-                    border-right: solid 3px #0ac;
-                    width: 100%;
-                    left: 0%;
-                    margin-left:-2px;
-                    /*background-color:  #000;*/
-                    text-align: center;
-                }
-
-                .vaga{
-                    position: relative;
-                    margin-top: 0em;
-                    top:0em;
-
-                    /*border: solid 1px #000;*/
-                    /*padding: 0.5em;*/
-                    text-align: center;
-                }
-
-                #estacionamento .vaga{
-                    background-color: #f0f0f0;
-                    overflow: hidden;
-                    left: -0.5em; 
-                    vertical-align: middle;
-                    position: relative;
-                    display: inline-table;
-                    width: 6%;
-                    min-width: 4.94%;
-                    min-height: 120px;
-                    height: 140px;
-                    /*transform: rotate(90deg);*/
-                    background-size: auto 100%;
-                    /*border: 1px solid #822;*/
-                    border-left: solid 2px #0ac; 
-                    border-right: solid 2px #0ac; 
-                    padding: 0px 0em 0px 0em;
-                }
-
-                #estacionamento #bloco-p .livre{
-                    background-image: url('../img/livre-deg.png');
-                    background-repeat: no-repeat;
-                    /*background-color: #000 !important;*/
-                }
-
-                #estacionamento #bloco-p .reservado{
-                    background-image: url('../img/reservado-deg.png');
-                    background-repeat: no-repeat;
-                }
-
-                #estacionamento #bloco-p .ocupado{
-                    background-image: url('../img/ocupado-deg.png');
-                    background-repeat: no-repeat;
-                }
-
-                #estacionamento #bloco-p .m-reserva{
-                    background-image: url('../img/minhareserva-deg.png');
-                    background-repeat: no-repeat;
-                }
-
-                #estacionamento #bloco-p span{
-                    position: relative;
-                    /*left:35%;*/
-                    top:1em;
-
-                }
-                #estacionamento #bloco-t span{
-                    position: relative;
-                    color:#FFF;
-                    /*left:27%;*/
-                    top:2.6em;
-                    padding-left: 1px;
-                    padding-right: 2px;
-                    background-color: #000;
-                    border-radius: 0.2em;
-                }
-                #estacionamento span{
-                    color:#FFF;
-                    padding-left: 1px;
-                    padding-right: 2px;
-                    background-color: #000;
-                    border-radius: 0.2em;
-                    z-index:1;
-                    font-size: 0.7em;
+            #problema:hover{
+                margin: 13.8px 4px 8px 6px !important;
+                padding: 0px 12px 0px 10px;
+                border-top: 3px solid #0ac;
+                border-bottom: 3px solid #0ac;
+                background-color: #19c;
+                color:#dfdfdf;
+                transition:all ease 0.3s;
+            }
 
 
+            #estacionamento{
+                position: relative;
+                margin-top: 2em;
+                border-left: solid 3px #0ac;
+                border-right: solid 3px #0ac;
+                width: 100%;
+                left: 0%;
+                margin-left:-2px;
+                /*background-color:  #000;*/
+                text-align: center;
+            }
 
-                }
+            .vaga{
+                position: relative;
+                margin-top: 0em;
+                top:0em;
 
-                #bloco-p{
-                    position:relative;
-                    border-top: solid 3px #0ac;
-                    margin-left:0px !important;
-                    left:0px !important;
-                }
+                /*border: solid 1px #000;*/
+                /*padding: 0.5em;*/
+                text-align: center;
+            }
 
-                #bloco-s{
-                    height: 7em;
-                }
+            #estacionamento .vaga{
+                background-color: #f0f0f0;
+                overflow: hidden;
+                left: -0.5em; 
+                vertical-align: middle;
+                position: relative;
+                display: inline-table;
+                width: 6%;
+                min-width: 4.94%;
+                min-height: 120px;
+                height: 140px;
+                /*transform: rotate(90deg);*/
+                background-size: auto 100%;
+                /*border: 1px solid #822;*/
+                border-left: solid 2px #0ac; 
+                border-right: solid 2px #0ac; 
+                padding: 0px 0em 0px 0em;
+            }
 
-                #bloco-t{
-                    border-bottom: solid 3px #0ac;
-                    margin-left:0px !important;
-                    left:0px !important;
-                    /*background-color: #000;*/
-                }
+            #estacionamento #bloco-p .livre{
+                background-image: url('../img/livre-deg.png');
+                background-repeat: no-repeat;
+                /*background-color: #000 !important;*/
+            }
 
-                #estacionamento #bloco-t .livre{
-                    background-image: url('../img/livre-deg-.png');
-                    background-repeat: no-repeat;
-                    /*background-color: #000 !important;*/
-                }
+            #estacionamento #bloco-p .reservado{
+                background-image: url('../img/reservado-deg.png');
+                background-repeat: no-repeat;
+            }
 
-                #estacionamento #bloco-t .reservado{
-                    background-image: url('../img/reservado-deg-.png');
-                    background-repeat: no-repeat;
-                }
+            #estacionamento #bloco-p .ocupado{
+                background-image: url('../img/ocupado-deg.png');
+                background-repeat: no-repeat;
+            }
 
-                #estacionamento #bloco-t .ocupado{
-                    background-image: url('../img/ocupado-deg-.png');
-                    background-repeat: no-repeat;
-                }
+            #estacionamento #bloco-p .m-reserva{
+                background-image: url('../img/minhareserva-deg.png');
+                background-repeat: no-repeat;
+            }
 
-                #estacionamento #bloco-t .m-reserva{
-                    background-image: url('../img/minhareserva-deg-.png');
-                    background-repeat: no-repeat;
-                }
-                #estacionamento #bloco-t .nulo{
-                    background-image: url('../img/nulo.png');
-                    background-repeat: no-repeat;
-                }            
+            #estacionamento #bloco-p span{
+                position: relative;
+                /*left:35%;*/
+                top:1em;
 
-                #espaco{
-                    height: 0.1em;
-                }
+            }
+            #estacionamento #bloco-t span{
+                position: relative;
+                color:#FFF;
+                /*left:27%;*/
+                top:2.6em;
+                padding-left: 1px;
+                padding-right: 2px;
+                background-color: #000;
+                border-radius: 0.2em;
+            }
+            #estacionamento span{
+                color:#FFF;
+                padding-left: 1px;
+                padding-right: 2px;
+                background-color: #000;
+                border-radius: 0.2em;
+                z-index:1;
+                font-size: 0.7em;
+
+
+
+            }
+
+            #bloco-p{
+                position:relative;
+                border-top: solid 3px #0ac;
+                margin-left:0px !important;
+                left:0px !important;
+            }
+
+            #bloco-s{
+                height: 7em;
+            }
+
+            #bloco-t{
+                border-bottom: solid 3px #0ac;
+                margin-left:0px !important;
+                left:0px !important;
+                /*background-color: #000;*/
+            }
+
+            #estacionamento #bloco-t .livre{
+                background-image: url('../img/livre-deg-.png');
+                background-repeat: no-repeat;
+                /*background-color: #000 !important;*/
+            }
+
+            #estacionamento #bloco-t .reservado{
+                background-image: url('../img/reservado-deg-.png');
+                background-repeat: no-repeat;
+            }
+
+            #estacionamento #bloco-t .ocupado{
+                background-image: url('../img/ocupado-deg-.png');
+                background-repeat: no-repeat;
+            }
+
+            #estacionamento #bloco-t .m-reserva{
+                background-image: url('../img/minhareserva-deg-.png');
+                background-repeat: no-repeat;
+            }
+            #estacionamento #bloco-t .nulo{
+                background-image: url('../img/nulo.png');
+                background-repeat: no-repeat;
+            }            
+
+            #espaco{
+                height: 0.1em;
+            }
         </style>
     </head>
     <body>
@@ -279,7 +279,7 @@
             </div></div>
         <!-- Conteúdo -->
 
-        
+
         <div id='corpo' >
             <div id='espaco'></div>
             <div id='legenda'>
@@ -303,9 +303,9 @@
                     $conbd = new conBD;
                     $linkBD = $conbd->conectarBD("Falha");
                     $vagaSql = "SELECT tg.vagas.estvaga, TIME_FORMAT(tg.vagas.hrentrada, '%H:%i') AS hrentrada, TIME_FORMAT(tg.vagas.hrsaida, '%H:%i') AS hrsaida FROM tg.vagas where pkvaga<13";
-                    $mvagaSql="SELECT pkvaga AS vaga FROM vagas, nfvagas WHERE nfvagas.fkvaga = vagas.pkvaga AND nfvagas.fkusuario = 1";
+                    $mvagaSql = "SELECT pkvaga AS vaga FROM vagas, nfvagas WHERE nfvagas.fkvaga = vagas.pkvaga AND nfvagas.fkusuario = 1";
                     $result = mysqli_query($linkBD, $vagaSql);
-                    $resultM= mysqli_fetch_assoc( mysqli_query($linkBD, $mvagaSql));
+                    $resultM = mysqli_fetch_assoc(mysqli_query($linkBD, $mvagaSql));
 //                    echo $resultM['vaga'];
                     for ($i = 1; $i <= mysqli_num_rows($result); $i++) {
                         $registro = mysqli_fetch_assoc($result);
@@ -316,10 +316,10 @@
                         }
                         $ii = $i;
                         $estvaga = ($ii == $resultM['vaga']) ? 'm-reserva' : (($estvaga == 0) ? 'livre' : (($estvaga == 1) ? 'reservado' : 'ocupado'));
-    
+
                         $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
                         $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
-    echo "<div class='vaga $estvaga'><input type='radio' style=' display: none;' value='$ii' name='v-radio' id='v$ii-radio'/>
+                        echo "<div class='vaga $estvaga'><input type='radio' style=' display: none;' value='$ii' name='v-radio' id='v$ii-radio'/>
                         <label for='v$ii-radio'><span>$ii</span><br><span>E:$hrentrada</span><br><span>S:$hrsaida</span></label></div>";
                     }
                     ?>
@@ -351,7 +351,7 @@
                             left: 10px;
                             float:left;
                             cursor: pointer;
-                            
+
                             height:20px;
                             /*padding:0em 1.2em 0em 0em;*/
                             margin:auto;
@@ -384,7 +384,7 @@
 //                            echo "$comando";
                             eval($comando);
                         }
-                        $ii = $i+12;
+                        $ii = $i + 12;
                         $estvaga = ($estvaga == 0) ? 'livre' : (($estvaga == 1) ? 'reservado' : 'ocupado');
                         $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
                         $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
@@ -392,25 +392,25 @@
                         <label for='v$ii-radio'><span>E:$hrentrada</span><br><span>S:$hrsaida</span><br><span>$ii</span></label></div>";
                     }
                     ?>
-                    
+
 <!--                    <div class='vaga livre'><input type='radio' style=' display: none;'  value='1' name='v1-radio' id='v1-radio'/>
-                        <label id="v1-label" for='v1-radio'><span>E:12:00</span><br><span>S:15:00</span><br><span>12</span></label></div>
-                    
-                    <div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>13</span></div>
-                    <div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>14</span></div>
-                    <div class='vaga ocupado'><span>E:12:00</span><br><span>S:15:00</span><br><span>15</span></div>
-                    <div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>16</span></div>
-                    <div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>17</span></div>
-                    <div class='vaga ocupado'><span>E:12:00</span><br><span>S:15:00</span><br><span>18</span></div>
-                    <div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>19</span></div>
-                    <div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>20</span></div>
+    <label id="v1-label" for='v1-radio'><span>E:12:00</span><br><span>S:15:00</span><br><span>12</span></label></div>
+
+<div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>13</span></div>
+<div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>14</span></div>
+<div class='vaga ocupado'><span>E:12:00</span><br><span>S:15:00</span><br><span>15</span></div>
+<div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>16</span></div>
+<div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>17</span></div>
+<div class='vaga ocupado'><span>E:12:00</span><br><span>S:15:00</span><br><span>18</span></div>
+<div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>19</span></div>
+<div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>20</span></div>
 <div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>21</span></div>-->
                     <div class='vaga ' style="width: 7.8em !important;"></div>
-                    
+
                 </div>
             </div>
             <div id='problema'><span>Relatar Problema</span>
-                </div></div>
-            
+            </div></div>
+
         <!--Ródape-->
         <footer style='position:relative; top:10px; float:bottom;'><p>Outro teste</p></footer></body></html>

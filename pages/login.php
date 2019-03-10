@@ -14,25 +14,31 @@ $menu = new menuPrincipal(4);
 <?php
 $conteudo = new login();
 ?>
+<script>
+    function subcadastrar() {
+        document.formp.action="cadastrar.php";
+    document.formp.submit();
+}
+    </script>
 <div id='corpo' >
+    <form id='formp' name='formp' method="POST" action="#">
+        <fieldset>
+            <legend>Login</legend>
+            <div class='campo'>
+                <div class='nome-campo'>
+                    <p><span>E-mail:*</span></p>
+                    <p><span>Senha:*</span></p>
+                </div>
+                <div class='item-campo'>
+                    <p><input type='text' name='email' /></p>
+                    <p><input type='text' name='senha' /></p>
 
-    <fieldset>
-        <legend>Login</legend>
-        <div class='campo'>
-            <div class='nome-campo'>
-                <p><span>E-mail:*</span></p>
-                <p><span>Senha:*</span></p>
+                </div>
+                <p><input type="button" value="Cadastrar" onclick="subcadastrar();"/>
+                    <input type="button" value='Logar' onclick="submit();"/></p>
             </div>
-            <div class='item-campo'>
-                <p><input type='text' name='email' /></p>
-                <p><input type='text' name='senha' /></p>
-                
-            </div>
-            <p><input type="button" value="Cadastrar"/>
-                <input type="button" value='Logar'/></p>
-        </div>
-    </fieldset>
-
+        </fieldset>
+    </form>
 </div>
 
 <!--Rodape-->

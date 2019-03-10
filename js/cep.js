@@ -8,10 +8,10 @@ function limpa_formulario_cep() {
     document.getElementById('bairro').value = ("");
     document.getElementById('cidade').value = ("");
     document.getElementById('estado').value = ("");
-    document.getElementById('rua').disabled = ("");
-    document.getElementById('bairro').disabled = ("");
-    document.getElementById('cidade').disabled = ("");
-    document.getElementById('estado').disabled = ("");
+    document.getElementById('rua').readonly = ("");
+    document.getElementById('bairro').readonly = ("");
+    document.getElementById('cidade').readonly = ("");
+    document.getElementById('estado').readonly = ("");
 }
 
 
@@ -22,10 +22,10 @@ function meu_callback(conteudo) {
         document.getElementById('bairro').value = (conteudo.bairro);
         document.getElementById('cidade').value = (conteudo.localidade);
         document.getElementById('estado').value = (conteudo.uf);
-        document.getElementById('rua').disabled = ("disabled");
-        document.getElementById('bairro').disabled = ("disabled");
-        document.getElementById('cidade').disabled = ("disabled");
-        document.getElementById('estado').disabled = ("disabled");
+        document.getElementById('rua').readonly = ("readonly");
+        document.getElementById('bairro').readonly = ("readonly");
+        document.getElementById('cidade').readonly = ("readonly");
+        document.getElementById('estado').readonly = ("true");
         
     } else {
         limpa_formulario_cep();
@@ -50,10 +50,10 @@ function pesquisacep(valor) {
             document.getElementById('bairro').value = "...";
             document.getElementById('cidade').value = "...";
             
-            document.getElementById('rua').disabled = ("disabled");
-            document.getElementById('bairro').disabled = ("disabled");
-            document.getElementById('cidade').disabled = ("disabled");
-            document.getElementById('estado').disabled = ("disabled");
+            document.getElementById('rua').readonly = ("readonly");
+            document.getElementById('bairro').readonly = ("readonly");
+            document.getElementById('cidade').readonly = ("readonly");
+            document.getElementById('estado').readonly = ("readonly");
 //Cria um elemento javascript.
             var script = document.createElement('script');
 //Sincroniza com o callback.
