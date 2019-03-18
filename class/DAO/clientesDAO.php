@@ -9,14 +9,14 @@
 
 class clientesDAO {
 
-    function __construct($op = 0, $con = null) {
+    function __construct($op = 0, $con = null, $ext = '') {
         if ($con === null) {
             exit(0);
         }
         switch ($op) {
             case 1:
                 $this->incluirUsuario($con);
-                exit(0);
+//                exit(0);
                 break;
 
             case 2:
@@ -25,12 +25,16 @@ class clientesDAO {
                 break;
             case 3:
                 $this->consultarUsuario($con);
-                exit(0);
+
                 break;
 
             case 4:
                 $this->excluirUsuario($con);
-                exit(0);
+
+                break;
+
+            case 5:
+                $this->validaUsuario($ext, $con);
                 break;
 
             default:
@@ -73,10 +77,10 @@ class clientesDAO {
         $idEndereco = $this->inserirEndereco($dadosUsuario, $con);
         $idTelefone = $this->inserirTelefone($dadosUsuario, $con);
         $idCarro = $this->inserirVeiculo($dadosUsuario, $con);
-        
+
         $campoRg = '';
         $rg = '';
-        
+
         if (isset($usr['rg']) && $usr['rg'] != "") {
             $rg = "'$usr[rg]', ";
             $campoRg = "`rg`, ";
@@ -98,15 +102,37 @@ class clientesDAO {
     }
 
     function consultarUsuario($con) {
-        foreach ($_POST as $key => $value) {
-            echo $key . ' - > ' . $value . '<br>';
+        $login = $_SESSION["login"];
+        $senha = $_SESSION["senhamd5"];
+        $tipo = "cpf";
+        if (!($this->validaUnico($login, 'cpf', $con)) || !($this->validaUnico($login, 'email', $con))) {
+            if ((preg_match("/@/", $login)) == true) {
+                $tipo = "email";
+            }
+            $query = "SELECT `usuarios`.`pkusuario` FROM `tg`.`usuarios` WHERE `tg`.`usuarios`.$tipo = '$login' AND `tg`.`usuarios`.senha = '$senha'";
+            $resultTemp = mysqli_query($con, $query) or die("Erro ao verificar Login e Senha");
+            $registro = mysqli_fetch_assoc($resultTemp);
+            $pkUsuario = $registro["pkusuario"];
+            $queryTemp = "SELECT * FROM "
+                    . "(SELECT * FROM `tg`.enderecos WHERE `tg`.enderecos.pkendereco = "
+                    . "(SELECT `tg`.usuarios.fkendereco FROM `tg`.usuarios WHERE `tg`.usuarios.pkusuario = $pkUsuario)) AS ENDERECO,"
+                    . "(SELECT * FROM `tg`.telefones WHERE `tg`.telefones.pktelefone = "
+                    . "(SELECT `tg`.usuarios.fktelefone FROM `tg`.usuarios WHERE `tg`.usuarios.pkusuario = $pkUsuario)) AS TELEFONE,"
+                    . "(SELECT * FROM `tg`.veiculos WHERE `tg`.veiculos.pkveiculo = "
+                    . "(SELECT `tg`.usuarios.fkveiculo FROM `tg`.usuarios WHERE `tg`.usuarios.pkusuario = $pkUsuario)) AS VEICULO, "
+                    . "(SELECT * FROM `tg`.usuarios WHERE `tg`.usuarios.pkusuario = $pkUsuario ) AS USUARIO;";
+            $resultRegistro = mysqli_query($con, $queryTemp) or die("Erro ao verificar");
+            if (mysqli_num_rows($resultRegistro) == 1) {
+                return $registro = mysqli_fetch_assoc($resultRegistro);
+            } else {
+                echo "Erro ao consultar usuário";
+                exit(0);
+            }
         }
     }
 
     function excluirUsuario($con) {
-        foreach ($_POST as $key => $value) {
-            echo $key . ' - > ' . $value . '<br>';
-        }
+        
     }
 
 // -----------------Fim-Usuário\/Cliente------------------ \\
@@ -132,7 +158,7 @@ class clientesDAO {
         $tel = $dadosTelefone;
         $campoLocal = '';
         $local = '';
-        
+
         if (isset($tel['localtel']) && $tel['localtel'] != "") {
             $local = ", '$tel[localtel]'";
             $campoLocal = ", `local`";
@@ -178,7 +204,7 @@ class clientesDAO {
             $modelo = ", '$car[modelo]'";
             $campoModelo = ", `modelo`";
         }
-        
+
 
         $query = "INSERT INTO `tg`.`veiculos` (`placa`$campoAno $campoCor $campoMarca $campoModelo) VALUES ('$car[placa]' $ano  $cor $marca $modelo);";
 //        echo $query;
@@ -230,5 +256,47 @@ class clientesDAO {
 //EMAIL
 //PLACA
 //
+//
+//
+//
+    function validaUsuario($ext, $con) {
+        $login = $_SESSION["login"];
+        $senha = $_SESSION["senhamd5"];
+        $tipo = "cpf";
+        if (!($this->validaUnico($login, 'cpf', $con)) || !($this->validaUnico($login, 'email', $con))) {
+            if ((preg_match("/@/", $login)) == true) {
+                $tipo = "email";
+            }
+            $query = "SELECT * FROM `tg`.`usuarios` WHERE `tg`.`usuarios`.$tipo = '$login' AND `tg`.`usuarios`.senha = '$senha'";
+            $result = mysqli_query($con, $query) or die("Erro ao verificar Login e Senha");
+            if (mysqli_num_rows($result) == 1) {
+                $registro = mysqli_fetch_assoc($result);
+
+                header('location:../perfil.php');
+            } else {
+                unset($_SESSION['login']);
+                unset($_SESSION['nome']);
+                unset($_SESSION['senha']);
+                echo"<script>"
+                . "alert('Login ou Senha incorretos');"
+                . "history.go(-1);"
+                . "</script>";
+            }
+            exit(0);
+        } else {
+            echo 'Usuário não encontrado';
+        }
+
+//        
+//        $query = "INSERT INTO `tg`.`usuarios` (`nome`, `cpf`, $campoRg`datanasc`, `email`, `senha`, `habilitacao`, `fktelefone`, `fkendereco`, `fkveiculo`) VALUES ('$usr[nome]', '$usr[cpf]', $rg '$usr[datanascimento]', '$usr[email]', '$senha', '$usr[numerohabilitacao]', '$idTelefone', '$idEndereco', '$idCarro');";
+//
+////        $query = "INSERT INTO `tg`.`enderecos` (`cep`, `rua`, `numero`, $campoCompl `bairro`, `cidade`, `estado`) VALUES ('$end[cep]', '$end[rua]', '$end[numero]',$complemento '$end[bairro]', '$end[cidade]', '$end[estado]');";
+////        echo $query;
+//        mysqli_query($con, $query) or die("Erro ao inserir Usuario");
+//        unset($usr, $dadosUsuario);
+//        echo mysqli_insert_id($con);
+    }
+
+//LOGIN-USUARIO
 // -----------------Fim-Valida------------------ \\
 }

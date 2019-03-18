@@ -11,11 +11,11 @@ class menuPrincipal {
     //conteudo do menu
     private $conteudoMenu = null;
     //Nome dos itens
-    private $itemMenu = array('Inicio', 'Cadastro', 'Vagas', 'Sobre', 'Login', 'Reserva');
+    private $itemMenu = array('Inicio', '', 'Vagas', 'Sobre', 'Login', 'Reserva');
     //ainda não sei ------
-    private $ativoMenu = array(0=>'',1=>'', 2=>'', 3=>'', 4=>'', 5=>'');
+    private $ativoMenu = array(0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '');
     //link dos itens do menu
-    private $linkMenu = array('index.php', 'cadastrar.php', 'vagas.php', 'sobre.php', 'login.php', 'reserva.php');
+    private $linkMenu = array('index.php', ' ', 'vagas.php', 'sobre.php', 'login.php', 'reserva.php');
     //imagem do menu
     private $imagemMenu = '../img/parking.png';
 
@@ -43,8 +43,8 @@ class menuPrincipal {
         $this->conteudoMenu = $conteudoMenu;
     }
 
-    function setItemMenu($itemMenu, $posicao) {
-        $this->itemMenu = $itemMenu[$posicao];
+    function setItemMenu($itemMenut, $posicao) {
+        $this->itemMenu[$posicao] = $itemMenut;
     }
 
     function setAtivoMenu($ativoMenu, $posicao) {
@@ -52,7 +52,7 @@ class menuPrincipal {
     }
 
     function setLinkMenu($linkMenu, $posicao) {
-        $this->linkMenu = $linkMenu[$posicao];
+        $this->linkMenu[$posicao] = $linkMenu;
     }
 
     public function __construct($page) {
@@ -64,39 +64,43 @@ class menuPrincipal {
     }
 
     public function verificarSessao() {
-        if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+        if ((!isset($_SESSION['login'])) and ( !isset($_SESSION['senha']))) {
             unset($_SESSION['login']);
             unset($_SESSION['senha']);
             $this->setItemMenu("Cadastro", 1);
-            $this->setLinkMenu("cadastro.php", 1);
+            $this->setLinkMenu("cadastrar.php", 1);
             return 1;
-        } elseif ((isset($_SESSION['login']) == true) and ( isset($_SESSION['senha']) == true)) {
-            $nomeUser = $_SESSION['nome'];
+        } else if ((isset($_SESSION['login'])) and ( isset($_SESSION['senhamd5']))) {
+            $nomeUser = $_SESSION['login'];
 
             $this->setItemMenu("Perfil", 1);
             $this->setLinkMenu("perfil.php", 1);
             $this->setItemMenu("Sair", 4);
-            $this->setLinkMenu("logon.php", 4);
-            //echo "<div id ='nome-u'>Bem Vindo $nomeUser</div>";
+            $this->setLinkMenu("logout.php", 4);
+            echo "<BR><BR><BR><BR><div id ='nome-u'>Bem Vindo $nomeUser</div>";
 
             return 0;
         } else {
+            session_destroy();
             return -1;
         }
     }
 
     public function alterarConteudoMenu() {
         $imagem = $this->getImagemMenu();
+        
+        ////////
+        $valorTemp = $this->verificarSessao();
         $link = $this->getLinkMenu();
         //$texto = $this->getativoMenu();
         $item = $this->getItemMenu();
-        $valorTemp = $this->verificarSessao();
+        
         $ativo = $this->getAtivoMenu();
         //condicional do menu de acordo com a sessao conectada
-        $tempMenuReserva = ($valorTemp == 1) ? "" : (($valorTemp == 0) ? "<a href='$link[5]'><li class='item-s-l $ativo[5]'>$item[5]</li></a>\n" : "<script>alert('Erro no menu');</script>");
+        $tempMenuReserva = ($valorTemp == 1) ? "" : (($valorTemp == 0) ? "<a href='$link[5]'><li class='item-s-l $ativo[5]'>$item[5]</li></a>\n" : "<script>alert('Erro no menu $valorTemp __ $_SESSION[login]');</script>");
         $tempMenuReservaResponsivo = ($valorTemp == 1) ? "" : (($valorTemp == 0) ? "<a href='$link[5]'><li class='item-s-lsec $ativo[5]'>$item[5]</li></a>\n" : "<script>alert('Erro no menu');</script>");
         //$tempMenuS = ($valorTemp == 1)?"<li class='item-t-l ativo-l'>Login</li>":(($valorTemp == 0)?"<li class='item-t-l ativo-l'>$item[1]</li>":"<script>alert('Erro no menu');</script>");
-        
+
         $conteudoMenu = "<div id='m-bk'>\n" .
                 "<div class='item-p'>\n" .
                 "<a href='$link[0]'><img class='item-p-m' src='$imagem'/><span style='font-size:1.7em'>Parking</span></a>\n" .
@@ -131,14 +135,21 @@ class menuPrincipal {
                 "<div id='item-ssec'>\n" .
                 "<a href='$link[0]'><li class='item-s-lsec $ativo[0]'>$item[0]</li></a>\n" .
                 "<a href='$link[1]'><li class='item-s-lsec $ativo[1]'>$item[1]</li></a>\n" .
-                $tempMenuReservaResponsivo.
+                $tempMenuReservaResponsivo .
                 "\n <a href='$link[2]'><li class='item-s-lsec $ativo[2]'>$item[2]</li></a>\n" .
                 "<a href='$link[3]'><li class='item-s-lsec $ativo[3]'>$item[3]</li></a>\n" .
                 "<a href='$link[4]'><li class='item-t-lsec $ativo[4]'>$item[4]</li></a>\n" .
                 "</div>" .
                 "</div>";
-        $conteudoMenu.=$conteudoMenuResponsivo;
+        $conteudoMenu .= $conteudoMenuResponsivo;
         $this->setConteudoMenu($conteudoMenu);
+        /*foreach ($link as $key => $value) {
+            echo $key ."->".$value."<br>";
+        }
+        foreach ($item as $key => $value) {
+            echo "<br>".$key ."->".$value;
+        }
+        exit(0);*/
     }
 
     /*

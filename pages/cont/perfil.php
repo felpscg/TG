@@ -1,15 +1,26 @@
-
 <?php
 
-/**
- * Description of cadastrar
- *
- * @author Felipe Corrêa Gomes
- * Criado em 03/01/2019
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-class cadastrar {
 
-    function __construct() {
+/**
+ * Description of perfil
+ *
+ * @author felip
+ */
+class perfil {
+    function __construct($registro) {
+        if(isset($registro))
+            echo 'variavel iniciada<br>';
+        else
+            echo "erro ao iniciar a variavel";
+        foreach ($registro as $key => $value) {
+            echo $key ." - >". $value. "<BR>";
+        }
+        /*
         echo " <div id = 'corpo' >\n"
         . " <div>\n"
         . " <form action = '#' method = 'POST'>\n"
@@ -154,6 +165,6 @@ class cadastrar {
         . " </form>\n"
         . " </div>\n"
         . " </div>";
+        */
     }
-
 }
