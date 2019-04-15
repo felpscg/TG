@@ -272,7 +272,7 @@ class clientesDAO {
             if (mysqli_num_rows($result) == 1) {
                 $registro = mysqli_fetch_assoc($result);
 
-                header('location:../perfil.php');
+                header('location:../pages/perfil.php');
             } else {
                 unset($_SESSION['login']);
                 unset($_SESSION['nome']);

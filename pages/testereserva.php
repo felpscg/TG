@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--MINHA RESERVA-->
 <html>
     <head>
         <meta charset='UTF-8'>
@@ -300,10 +300,18 @@
                 <div id='bloco-p'>
                     <?php
                     require '../class/conBD.php';
+//                    session_start();
+//                    $login = $_SESSION["login"];
+//                    $senhaMd5 = $_SESSION["senhamd5"];
+//                    session_abort();
                     $conbd = new conBD;
                     $linkBD = $conbd->conectarBD("Falha");
-                    $vagaSql = "SELECT tg.vagas.estvaga, TIME_FORMAT(tg.vagas.hrentrada, '%H:%i') AS hrentrada, TIME_FORMAT(tg.vagas.hrsaida, '%H:%i') AS hrsaida FROM tg.vagas where pkvaga<13";
-                    $mvagaSql = "SELECT pkvaga AS vaga FROM vagas, nfvagas WHERE nfvagas.fkvaga = vagas.pkvaga AND nfvagas.fkusuario = 1";
+
+                    $vagaSql = "SELECT * FROM (SELECT tg.vagas.pknmvaga, tg.vagas.numerovaga, tg.vagas.estadovaga, TIME_FORMAT(tg.reservas.hrentrada, '%H:%i') AS hrentrada,  TIME_FORMAT(tg.reservas.hrsaida, '%H:%i') AS hrsaida FROM tg.vagas LEFT join tg.reservas ON tg.reservas.fkvaga = tg.vagas.numerovaga) AS teste where teste.pknmvaga <12 GROUP BY numerovaga order BY numerovaga ASC; ";
+                    $mvagaSql = "SELECT tg.vagas.pknmvaga AS vaga  FROM tg.vagas, tg.reservas WHERE tg.reservas.fkvaga = tg.vagas.pknmvaga AND tg.reservas.fkusuario = 2";
+
+
+
                     $result = mysqli_query($linkBD, $vagaSql);
                     $resultM = mysqli_fetch_assoc(mysqli_query($linkBD, $mvagaSql));
 //                    echo $resultM['vaga'];
@@ -314,26 +322,14 @@
 //                            echo "$comando";
                             eval($comando);
                         }
-                        $ii = $i;
-                        $estvaga = ($ii == $resultM['vaga']) ? 'm-reserva' : (($estvaga == 0) ? 'livre' : (($estvaga == 1) ? 'reservado' : 'ocupado'));
+                        $estadovaga = ($numerovaga == $resultM['vaga']) ? 'm-reserva' : (($estadovaga == 0) ? 'livre' : (($estadovaga == 1) ? 'reservado' : 'ocupado'));
 
                         $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
                         $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
-                        echo "<div class='vaga $estvaga'><input type='radio' style=' display: none;' value='$ii' name='v-radio' id='v$ii-radio'/>
-                        <label for='v$ii-radio'><span>$ii</span><br><span>E:$hrentrada</span><br><span>S:$hrsaida</span></label></div>";
+                        echo "<div class='vaga $estadovaga'><input type='radio' style=' display: none;' value='$numerovaga' name='v-radio' id='v$numerovaga-radio'/>
+                        <label for='v$numerovaga-radio'><span>$numerovaga</span><br><span>E:$hrentrada</span><br><span>S:$hrsaida</span></label></div>";
                     }
                     ?>
-<!--                    <div class='vaga livre'><span>1</span><br><span>E: - </span><br><span>S: - </span></div>
-                    <div class='vaga ocupado'><span>2</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
-                    <div class='vaga m-reserva'><span>3</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
-                    <div class='vaga reservado'><span>4</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
-                    <div class='vaga ocupado'><span>5</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
-                    <div class='vaga livre'><span>6</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
-                    <div class='vaga ocupado'><span>7</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
-                    <div class='vaga livre'><span>8</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
-                    <div class='vaga reservado'><span>9</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
-                    <div class='vaga livre'><span>10</span><br><span>E:12:00</span><br><span>S:15:00</span></div>
-                    <div class='vaga ocupado'><span>11</span><br><span>E:12:00</span><br><span>S:15:00</span></div>-->
 
                 </div>
                 <div id='bloco-s'>
@@ -376,38 +372,33 @@
 
                     </style>
                     <?php
-                    $result = mysqli_query($linkBD, "SELECT tg.vagas.estvaga, TIME_FORMAT(tg.vagas.hrentrada, '%H:%i') AS hrentrada, TIME_FORMAT(tg.vagas.hrsaida, '%H:%i') AS hrsaida FROM tg.vagas where pkvaga>=13");
+                    $result = mysqli_query($linkBD, "SELECT * FROM (SELECT tg.vagas.pknmvaga, tg.vagas.numerovaga, tg.vagas.estadovaga, TIME_FORMAT(tg.reservas.hrentrada, '%H:%i') AS hrentrada,  TIME_FORMAT(tg.reservas.hrsaida, '%H:%i') AS hrsaida FROM tg.vagas LEFT join tg.reservas ON tg.reservas.fkvaga = tg.vagas.numerovaga) AS teste where teste.pknmvaga >=12 GROUP BY numerovaga order BY numerovaga ASC; ");
                     for ($i = 1; $i <= mysqli_num_rows($result); $i++) {
                         $registro = mysqli_fetch_assoc($result);
                         foreach ($registro as $key => $value) {
                             $comando = "\$" . $key . "='" . $value . "';";
 //                            echo "$comando";
+
                             eval($comando);
                         }
+
                         $ii = $i + 12;
-                        $estvaga = ($estvaga == 0) ? 'livre' : (($estvaga == 1) ? 'reservado' : 'ocupado');
+                        $estadovaga = ($estadovaga == 0) ? 'livre' : (($estadovaga == 1) ? 'reservado' : 'ocupado');
                         $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
                         $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
-                        echo "<div class='vaga $estvaga'><input type='radio' style=' display: none;' value='$ii' name='v-radio' id='v$ii-radio'/>
+                        echo "<div class='vaga $estadovaga'><input type='radio' style=' display: none;' value='$ii' name='v-radio' id='v$ii-radio'/>
                         <label for='v$ii-radio'><span>E:$hrentrada</span><br><span>S:$hrsaida</span><br><span>$ii</span></label></div>";
                     }
+                    for($i=0; $i<10; $i++){
+                        echo "<div class='vaga'></div>";
+                    }
                     ?>
-
-<!--                    <div class='vaga livre'><input type='radio' style=' display: none;'  value='1' name='v1-radio' id='v1-radio'/>
-    <label id="v1-label" for='v1-radio'><span>E:12:00</span><br><span>S:15:00</span><br><span>12</span></label></div>
-
-<div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>13</span></div>
-<div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>14</span></div>
-<div class='vaga ocupado'><span>E:12:00</span><br><span>S:15:00</span><br><span>15</span></div>
-<div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>16</span></div>
-<div class='vaga reservado'><span>E:12:00</span><br><span>S:15:00</span><br><span>17</span></div>
-<div class='vaga ocupado'><span>E:12:00</span><br><span>S:15:00</span><br><span>18</span></div>
-<div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>19</span></div>
-<div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>20</span></div>
-<div class='vaga livre'><span>E:12:00</span><br><span>S:15:00</span><br><span>21</span></div>-->
+                    
+                    
                     <div class='vaga ' style="width: 7.8em !important;"></div>
 
                 </div>
+<!--                <input type="">-->
             </div>
             <div id='problema'><span>Relatar Problema</span>
             </div></div>

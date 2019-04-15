@@ -22,7 +22,7 @@
     ?>
 
     <style>
-        td[data-semana="0"] { color: #ff0000; }
+        td[data-semana="0"] { color: #f00; }
     </style>
 </head>
 <body>
