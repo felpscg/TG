@@ -48,12 +48,14 @@
                     document.getElementById("avancarCal").style = ("display:none;");
                     document.getElementById("meses").style = ("z-index:555;");
                     document.getElementById("fundo-p").style = ("z-index:566;");
+                    document.getElementById("cancelar").style = ("display:block;");
 
                 } else if (valor == 1) {
                     document.getElementById("avancarCal").value = ("2");
                     document.getElementById("tempo-IO").style = ("z-index:999;");
                     document.getElementsByClassName("campo").style = ("z-index:1000;");
                     document.getElementById("avancarCal").style = ("display:block;");
+                    document.getElementById("cancelar").style = ("display:block;");
                 } else if (valor == 2) {
                     document.getElementById("avancarCal").value = ("-1");
                     alert(document.getElementById("diamesin").value);
@@ -312,11 +314,23 @@
                             z-index: 444;
                         }*/
             #avancarCal{
-                position: absolute;
+                position: fixed;
                 left: 70%;
                 margin-left: 2em;
                 top: 23em;
                 display: none;
+                z-index: 2000;
+                /*z-index: 20000;*/
+            }
+            #cancelar{
+                position: fixed;
+                left: 60%;
+                margin-left: 1em;
+                top: 2em;
+                display: none;
+                font-size: 2em;
+                cursor:pointer;
+                color: #fff;
                 z-index: 2000;
                 /*z-index: 20000;*/
             }
@@ -393,7 +407,8 @@
     <body>
         <!------------------------->
 
-        <div id="tempo-IO">
+        <div id="tempo-IO" onselect="history.go(0)">
+            
             <div class = 'campo'>
                 <div class = 'nome-campo'>
                     <p><span>Horário de Entrada:</span></p>
@@ -405,7 +420,7 @@
                 </div>
             </div>
         </div>
-        <div id="fundo-p">
+        <div id="fundo-p" onblur="history.go(0)">
             <?php
             require '../class/calendario.php';
             echo "<div id='meses'>";
@@ -605,6 +620,7 @@
             </div>
             <div id='problema'><span>Relatar Problema</span>
             </div></div>
+        <span id="cancelar" onclick="history.go(0)">X</span>
         <button id="avancarCal" value="0" onclick="calendarioData(this.value);">Avançar</button>
 
         <!--Ródape-->
