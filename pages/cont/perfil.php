@@ -8,14 +8,12 @@
 class perfil {
 
     function __construct($registro) {
-        if (isset($registro))
-            echo 'variavel iniciada<br>';
-        else
-            echo "erro ao iniciar a variavel";
+        if (!isset($registro))
+            header('location:./login.php');
 //        foreach ($registro as $key => $value) {
 //            echo $key . " - >" . $value . "<BR>";
 //        }
-        echo " <div id = 'corpo' >\n"
+        echo " <div id = 'corpo' ' >\n"
         . " <div>\n"
         . " <form action = '#' method = 'POST'>\n"
         . " <fieldset>\n"

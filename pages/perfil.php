@@ -15,9 +15,7 @@ $con = $BD->conectarBD("Falha ao conectar, erro na instrução SQL");
 
 if (!(isset($_POST['est'])) && isset($_SESSION['login'])) {
     $op = 3;
-    echo "até aqui";
     $obj = new clientesDAO($op, $con);
-    echo "até aqui";
     $registro = $obj->consultarUsuario($con);
 //        $obj->consultarUsuario($con);
     
@@ -37,7 +35,7 @@ else{
     exit(0);
 }
 
-
+session_abort();
 $header = new htmlHeader();
 $menu = new menuPrincipal(1);
 ?>

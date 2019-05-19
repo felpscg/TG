@@ -1,0 +1,431 @@
+
+/* 
+    Created on : 19/05/2019, 12:31:02
+    Author     : felip
+*/
+
+
+body{
+    width: 1349px;
+    font-family: aegean;
+    /*font-size: 1.5em !important;*/
+}
+footer{
+    width: 1349px;
+    font-size: 1.2em;
+}
+#legenda{
+    position: relative;
+    margin-top: 2em;
+    top:0em;
+    width: 50%;
+    height: 1em;
+    left: 2%;
+    /*border: solid 1px #000;*/
+}
+
+.legenda{
+    position: relative;
+    display: inline-block;
+}
+
+.livre{
+    background-image: url('../img/livre.png');
+    background-repeat: no-repeat;
+}
+
+.reservado{
+    background-image: url('../img/reservado.png');
+    background-repeat: no-repeat;
+}
+
+.ocupado{
+    background-image: url('../img/ocupado.png');
+    background-repeat: no-repeat;
+}
+
+.m-reserva{
+    background-image: url('../img/minhareserva.png');
+    background-repeat: no-repeat;
+}
+
+.livre, .ocupado, .reservado, .m-reserva{
+    margin-top: 0em;
+    margin-left: 1em;
+    top: 0em;
+    vertical-align: top;
+    position: relative;
+    display: inline-table;
+    width: 15%;
+    min-height: 80px;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.legenda span{
+    position:relative;
+    width: 80%;
+    margin-left: -30%; 
+    left:40%;
+    bottom:1.5em;
+    color:#000;
+    font-size: 0.8em;
+}
+
+#problema{
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    margin: 13.8px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-top: 3px solid #08bdff;
+    border-bottom: 3px solid #08bdff;
+    background-color: #0089bb;
+    color:#fff;
+    z-index:777;
+    cursor:pointer;
+}
+
+#problema:hover{
+    margin: 13.8px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-top: 3px solid #0ac;
+    border-bottom: 3px solid #0ac;
+    background-color: #19c;
+    color:#dfdfdf;
+    transition:all ease 0.3s;
+}
+
+
+#estacionamento{
+    position: relative;
+    margin-top: 2em;
+    border-left: solid 3px #0ac;
+    border-right: solid 3px #0ac;
+    width: 99%;
+    left: 0.4%;
+    margin-left:-2px;
+    /*background-color:  #000;*/
+    text-align: center;
+}
+
+.vaga{
+    position: relative;
+    margin-top: 0em;
+    top:0em;
+
+    /*border: solid 1px #000;*/
+    /*padding: 0.5em;*/
+    text-align: center;
+}
+
+#estacionamento .vaga{
+    background-color: #f0f0f0;
+    overflow: hidden;
+    left: -0.5em; 
+    vertical-align: middle;
+    position: relative;
+    display: inline-table;
+    width: 6%;
+    min-width: 4.94%;
+    min-height: 120px;
+    height: 140px;
+    /*transform: rotate(90deg);*/
+    background-size: auto 100%;
+    /*border: 1px solid #822;*/
+    border-left: solid 2px #0ac; 
+    border-right: solid 2px #0ac; 
+    padding: 0px 0em 0px 0em;
+}
+
+#estacionamento #bloco-p .livre{
+    background-image: url('../img/livre-deg.png');
+    background-repeat: no-repeat;
+    /*background-color: #000 !important;*/
+}
+
+#estacionamento #bloco-p .reservado{
+    background-image: url('../img/reservado-deg.png');
+    background-repeat: no-repeat;
+}
+
+#estacionamento #bloco-p .ocupado{
+    background-image: url('../img/ocupado-deg.png');
+    background-repeat: no-repeat;
+}
+
+#estacionamento #bloco-p .m-reserva{
+    background-image: url('../img/minhareserva-deg.png');
+    background-repeat: no-repeat;
+}
+
+#estacionamento #bloco-p span{
+    position: relative;
+    /*left:35%;*/
+    top:1em;
+
+}
+#estacionamento #bloco-t span{
+    position: relative;
+    color:#FFF;
+    /*left:27%;*/
+    top:2.6em;
+    padding-left: 1px;
+    padding-right: 2px;
+    background-color: #000;
+    border-radius: 0.2em;
+}
+#estacionamento span{
+    color:#FFF;
+    padding-left: 1px;
+    padding-right: 2px;
+    background-color: #000;
+    border-radius: 0.2em;
+    z-index:1;
+    font-size: 0.7em;
+
+
+
+}
+
+#bloco-p{
+    position:relative;
+    border-top: solid 3px #0ac;
+    margin-left:0px !important;
+    left:0px !important;
+}
+
+#bloco-s{
+    height: 5em;
+}
+
+#bloco-t{
+    border-bottom: solid 3px #0ac;
+    margin-left:0em !important;
+    left:0px !important;
+    /*background-color: #000;*/
+}
+
+#estacionamento #bloco-t .livre{
+    background-image: url('../img/livre-deg-.png');
+    background-repeat: no-repeat;
+    /*background-color: #000 !important;*/
+}
+
+#estacionamento #bloco-t .reservado{
+    background-image: url('../img/reservado-deg-.png');
+    background-repeat: no-repeat;
+}
+
+#estacionamento #bloco-t .ocupado{
+    background-image: url('../img/ocupado-deg-.png');
+    background-repeat: no-repeat;
+}
+
+#estacionamento #bloco-t .m-reserva{
+    background-image: url('../img/minhareserva-deg-.png');
+    background-repeat: no-repeat;
+}
+#estacionamento #bloco-t .nulo{
+    background-image: url('../img/nulo.png');
+    background-repeat: no-repeat;
+}            
+
+#espaco{
+    height: 0.1em;
+}
+
+#m-bksec,#corpo{
+    z-index:100;
+}
+
+/*-----------------*/
+
+[name="diames"]{
+    display: none !important;
+}
+#mesdialabel{
+    cursor: pointer;
+
+}
+/*            #qualquer{
+                position: fixed;
+                left: 0px;
+                top:0em;
+                width: 100%;
+                height: 30em;
+                background-color: #fff;
+                z-index: 444;
+            }*/
+#avancarCal{
+    position: fixed;
+    font-family: aegean;
+    font-size:0.85em !important;
+    left: 65%;
+    margin-left: 0em;
+    top: 15em;
+    display: none;
+    z-index: 2000;
+    right: 5%;
+    margin: 0px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-top: 3px solid #08bdff;
+    border-bottom: 3px solid #08bdff;
+    background-color: #0089bb;
+    color:#fff;
+    cursor:pointer;
+    /*z-index: 20000;*/
+}
+#avancarCal:hover{
+    margin: 0px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-top: 3px solid #0ac;
+    border-bottom: 3px solid #0ac;
+    background-color: #19c;
+    color:#dfdfdf;
+    transition:all ease 0.3s;
+}
+#cancelar{
+    position: fixed;
+    left: 60%;
+    margin-left: 1em;
+    top: 2em;
+    display: none;
+    font-size: 2em;
+    cursor:pointer;
+    color: #fff;
+    z-index: 2000;
+    /*z-index: 20000;*/
+}
+
+#localvaga{
+    position: fixed;
+    left: 60%;
+    margin-left: 1em;
+    top: 5em;
+    display: none;
+    font-size: 1.5em;
+    cursor:auto;
+    color: #fff;
+    z-index: 2000;
+}
+
+#diareserva{
+    position: fixed;
+    left: 60%;
+    margin-left: 1em;
+    top: 6em;
+    display: none;
+    font-size: 1.5em;
+    cursor: auto;
+    color: #fff;
+    z-index: 2000;                
+}
+
+
+#meses{
+    position: fixed;
+    margin-left: -150px;
+    left: 50%;
+    width: 300px;
+    height: auto;
+    margin-top: 0.6em;
+    background-color: transparent;
+    z-index: 55;
+    /*z-index: 555;*/
+}
+.mes{
+    border: 1px #000 solid;
+    margin-top: -0.5em;
+    padding-top: 0em; 
+    margin-bottom:1em; 
+    background-color: #fff;
+    font-size: 0.7em !important;
+}
+#fundo-p{
+    position:fixed;
+    width: 100%;
+    margin:0px;
+    height: 650px;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 56;
+    /*z-index: 566;*/
+}
+
+#tempo-IO{
+    position: fixed;
+    width: 100%;
+    height: 30em;
+    background-color:rgba(0,0,0,0.4);
+    z-index: 10;
+    /*z-index: 1000;*/
+}
+.campo{
+    position: fixed;
+
+    left:50%;
+    margin-left: -6.5em;
+    width: 13em;
+    height: 4.4em;
+    z-index: 777;
+    padding: 0em !important;
+    background-color: #fff !important;
+    top:11em;
+    z-index: 99;
+    /*z-index: 999;*/
+}            
+.nome-campo, .item-campo{
+    padding: 0px;
+    margin: 0px; 
+}
+.nome-campo{
+    padding-right: 1em !important;
+    padding-left: 1em !important;
+    width: 50% !important;
+}
+.item-campo{
+    width: 30% !important;
+    right: 10%;
+}
+p{
+    font-size: 0.8em;
+    padding: 0px;
+    margin: 0px; 
+
+}
+
+
+/*--------------------------------------*/
+
+input[type=radio]{
+    display:none;
+}
+
+[name="v-radio"] + label{
+    position: relative; 
+    left: 10px;
+    float:left;
+    cursor: pointer;
+
+    height:20px;
+    /*padding:0em 1.2em 0em 0em;*/
+    margin:auto;
+    background-image: url('./../img/radio.png');
+    background-repeat:no-repeat;
+    background-position:0 0;
+    transition: all ease .1s;
+}
+
+
+
+input[type=radio]:checked + label{
+    background-position:0 0px;
+    background-position-x: 3em;
+}
+
+
+
+input[type=radio]:checked + label{
+    background-position:0 -20px;
+}

@@ -8,7 +8,7 @@ class logout {
         
         session_destroy();
         session_abort();
-        header("location:$root/index.php");
+        header("location:./index.php");
     }
 
 }

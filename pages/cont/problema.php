@@ -1,8 +1,15 @@
 <?php
 
-class login {
+
+/**
+ * Description of problema
+ *
+ * @author felip
+ */
+class problema {
 
     function __construct() {
+
         echo "<script>
     function submit() {
         document.formp.submit();
@@ -14,21 +21,20 @@ class login {
             <legend>Login</legend>
             <div class='campo'>
                 <div class='nome-campo'>
-                    <p><span>E-mail ou CPF:*</span></p>
-                    <p><span>Senha:*</span></p>
+                    <p><span>Assunto:*</span></p>
+                    <p><span>Descrição:</span></p>
                 </div>
                 <div class='item-campo'>
-                    <p><input type='text' name='login' /></p>
-                    <p><input type='text' name='senha' /></p>
+                    <p><input type='text' name='assunto' /></p>
+                    <p><textarea name='descricao' rows='5' cols='40' maxlength='400'></textarea></p>
 
                 </div>
-                <p><a href='cadastrar.php'><input type='button' value='Cadastrar'/></a>
-                    <input type='hidden' name='acesso' value='true'/>
+                <p>
                     <input type='button' value='Prosseguir' onclick='submit();'/></p>
             </div>
         </fieldset>
     </form>
-</div>";
+    </div>";
     }
 
 }

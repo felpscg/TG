@@ -40,7 +40,14 @@ a:visited, a:after, a:before,a:link{
 }
 
 
-
+#nome-u{
+    position:fixed;
+    background-color: #fff;
+    padding: 0.3em;
+    top:4em;   
+    right: 10%;
+    z-index: 300;
+}
 
 #cadpagp{
     position: relative;

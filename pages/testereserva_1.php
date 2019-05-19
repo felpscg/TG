@@ -5,6 +5,7 @@
         <title>Parking - Controle de Estacionamento</title>
         <!--CSS-->
         <link rel='stylesheet' type='text/css' href='../css/menu.css'>
+        <link rel='stylesheet' type='text/css' href='../css/vaga-reserva.css'>
         <!--JS--><script charset='utf-8' type='text/javascript' src='../js/cep.js' defer='defer'></script>
         <script charset='utf-8' type='text/javascript' src='../js/placa.js' defer='defer'></script>
         <script charset='utf-8' type='text/javascript' src='../js/cpf.js' defer='defer'></script>
