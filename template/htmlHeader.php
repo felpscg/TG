@@ -31,6 +31,7 @@ class htmlHeader {
     function setCaminhoCSS($caminhoCSS) {
         $this->caminhoCSS = $caminhoCSS;
     }
+
     function getCaminhoBasicoCSS() {
         return $this->caminhoBasicoCSS;
     }
@@ -39,7 +40,7 @@ class htmlHeader {
         return $this->caminhoBasicoJS;
     }
 
-        function __construct($op = '', $cJS = '', $cCSS = '') {
+    function __construct($op = '', $cJS = '', $cCSS = '') {
         switch ($op) {
 
 //            Carrega o caminho Básico do CSS e do JS
@@ -49,7 +50,7 @@ class htmlHeader {
 
 //            Carrega o caminho Básico do CSS e do JS adicionando novos estilos
             case 1:
-                
+
                 $this->setCaminhoCSS($cCSS);
                 $this->headInicial();
                 break;
@@ -81,9 +82,11 @@ class htmlHeader {
     }
 
     function headInicial() {
+//        $root = $_SERVER['DOCUMENT_ROOT'];
         echo "<html>\n" .
         "<head>\n" .
         "<meta charset='UTF-8'>\n" .
+        "<link rel='shortcut icon' href='../img/parking-ib.png'>" .
         "<title>Parking - Controle de Estacionamento</title>\n" .
         "<!--CSS-->\n"
         . $this->getCaminhoBasicoCSS()

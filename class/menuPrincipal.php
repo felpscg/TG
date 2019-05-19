@@ -11,7 +11,7 @@ class menuPrincipal {
     //conteudo do menu
     private $conteudoMenu = null;
     //Nome dos itens
-    private $itemMenu = array('Inicio', '', 'Vagas', 'Sobre', 'Login', 'Reserva');
+    private $itemMenu = array('Inicio', '', 'Vagas', 'Sobre', 'Conectar', 'Reserva');
     //ainda não sei ------
     private $ativoMenu = array(0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '');
     //link dos itens do menu

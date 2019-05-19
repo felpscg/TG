@@ -149,7 +149,7 @@ class cadastrar {
         . " </fieldset>\n"
         . " \n"
         . "<input type='hidden' name='est' value='cad'/>"
-        . " <input type = 'button' value = 'Avançar' onclick = 'submit();'>\n"
+        . " <input type = 'button' style='top:0.4em;' value = 'Avançar' onclick = 'submit();'>\n"
         . " </fieldset>\n"
         . " </form>\n"
         . " </div>\n"

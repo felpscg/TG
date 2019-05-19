@@ -11,6 +11,12 @@
         <script charset='utf-8' type='text/javascript' src='../js/menu.js' defer='defer'></script>
         <script charset='utf-8' type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' defer='defer'></script>
         <script>
+            setTimeout(function () {
+                var valorav = document.getElementById("avancarCal").value;
+                if (valorav == 0 || valorav == -1)
+                    window.location.reload(1);
+            }, 10000);
+
             var est;
             function validahr(est) {
                 var erroIns = "Insira um horário válido\n Horário de funcionamento \n Abre as : 08:00 \n Fecha as: 18:00";
@@ -20,7 +26,7 @@
                 if (est == 0) {
                     hr = document.getElementById("hrentrada").value;
                     hrs = (hr.substring(0, 2));
-                    if(hrs<08 || hrs>18){
+                    if (hrs < 08 || hrs > 18) {
                         alert(erroIns);
                     }
                 }
@@ -28,10 +34,10 @@
                     hr = document.getElementById("hrsaida").value;
                     hrs = (hr.substring(0, 2));
                     min = (hr.substring(3, 5));
-                    if(hrs>=18 && min>00 || hrs<08){
+                    if (hrs >= 18 && min > 00 || hrs < 08) {
                         alert(erroIns);
                     }
-                    
+
                 }
 
             }
@@ -42,32 +48,61 @@
             }
             var valor;
             function calendarioData(valor) {
+                var valorvaga = 0;
+                var diames = 0;
+                var els = document.getElementsByName('v-radio');
+                var campodia = document.getElementsByName('diames');
+
+
+
                 if (valor == 0) {
 //                    alert("Teste");
+                    for (var i = 0; i < els.length; i++) {
+                        if (els[i].checked) {
+                            valorvaga = (i + 1);
+                        }
+                    }
+
+
+
                     document.getElementById("avancarCal").value = ("1");
                     document.getElementById("avancarCal").style = ("display:none;");
                     document.getElementById("meses").style = ("z-index:555;");
                     document.getElementById("fundo-p").style = ("z-index:566;");
                     document.getElementById("cancelar").style = ("display:block;");
+                    document.getElementById("localvaga").style = ("display:block;");
+                    document.getElementById("localvaga").innerHTML = "Vaga: " + valorvaga;
+                    document.getElementById("diareserva").innerHTML = "Dia:     -";
+                    document.getElementById("diareserva").style = ("display:block;");
 
                 } else if (valor == 1) {
+                    for (var i = 0; i < campodia.length; i++) {
+                        if (campodia[i].checked) {
+                            diames =  campodia[i].value;
+                    mes = (diames.substring(0, 2));
+                    dia = (diames.substring(2, 4));
+                            if(dia<10)
+                                dia="0"+dia;
+                            diames = dia+"/"+mes;
+                        }
+                    }
                     document.getElementById("avancarCal").value = ("2");
                     document.getElementById("tempo-IO").style = ("z-index:999;");
                     document.getElementsByClassName("campo").style = ("z-index:1000;");
                     document.getElementById("avancarCal").style = ("display:block;");
                     document.getElementById("cancelar").style = ("display:block;");
+                    document.getElementById("diareserva").innerHTML = "Dia:     " + diames;
                 } else if (valor == 2) {
                     document.getElementById("avancarCal").value = ("-1");
-                    alert(document.getElementById("diamesin").value);
                 } else {
                     history.go(0);
                 }
             }
         </script>
         <style>
-            @import url('../css/font.css');
+
             body{
-                width: 1358px !important;
+                width: 1349px;
                 font-family: aegean;
             }
 
@@ -75,8 +110,9 @@
                 position: relative;
                 margin-top: 2em;
                 top:0em;
-                width: 100%;
-                left: 10%;
+                width: 50%;
+                height: 1em;
+                left: 2%;
                 /*border: solid 1px #000;*/
             }
 
@@ -159,8 +195,8 @@
                 margin-top: 2em;
                 border-left: solid 3px #0ac;
                 border-right: solid 3px #0ac;
-                width: 100%;
-                left: 0%;
+                width: 99%;
+                left: 0.4%;
                 margin-left:-2px;
                 /*background-color:  #000;*/
                 text-align: center;
@@ -253,12 +289,12 @@
             }
 
             #bloco-s{
-                height: 7em;
+                height: 5em;
             }
 
             #bloco-t{
                 border-bottom: solid 3px #0ac;
-                margin-left:0px !important;
+                margin-left:0em !important;
                 left:0px !important;
                 /*background-color: #000;*/
             }
@@ -334,6 +370,32 @@
                 z-index: 2000;
                 /*z-index: 20000;*/
             }
+
+            #localvaga{
+                position: fixed;
+                left: 60%;
+                margin-left: 1em;
+                top: 5em;
+                display: none;
+                font-size: 1.5em;
+                cursor:auto;
+                color: #fff;
+                z-index: 2000;
+            }
+
+            #diareserva{
+                position: fixed;
+                left: 60%;
+                margin-left: 1em;
+                top: 6em;
+                display: none;
+                font-size: 1.5em;
+                cursor: auto;
+                color: #fff;
+                z-index: 2000;                
+            }
+
+
             #meses{
                 position: fixed;
                 margin-left: -150px;
@@ -407,8 +469,7 @@
     <body>
         <!------------------------->
 
-        <div id="tempo-IO" onselect="history.go(0)">
-            
+        <div id="tempo-IO" >
             <div class = 'campo'>
                 <div class = 'nome-campo'>
                     <p><span>Horário de Entrada:</span></p>
@@ -420,7 +481,7 @@
                 </div>
             </div>
         </div>
-        <div id="fundo-p" onblur="history.go(0)">
+        <div id="fundo-p" >
             <?php
             require '../class/calendario.php';
             echo "<div id='meses'>";
@@ -540,7 +601,7 @@
 //                            echo "$comando";
                             eval($comando);
                         }
-                        $estadovaga = ($numerovaga == $resultM['vaga']) ? 'm-reserva' : (($estadovaga == 0) ? 'livre' : (($estadovaga == 1) ? 'reservado' : 'ocupado'));
+                        $estadovaga = ($numerovaga == $resultM['vaga']) ? 'm-reserva' : (($estadovaga == 0) ? 'livre' : (($estadovaga == 1) ? 'reservado' : (($estadovaga == 2) ? 'ocupado' : "incorreto")));
 
                         $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
                         $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
@@ -620,7 +681,10 @@
             </div>
             <div id='problema'><span>Relatar Problema</span>
             </div></div>
+
         <span id="cancelar" onclick="history.go(0)">X</span>
+        <span id="localvaga">A</span>
+        <span id="diareserva">B</span>
         <button id="avancarCal" value="0" onclick="calendarioData(this.value);">Avançar</button>
 
         <!--Ródape-->
