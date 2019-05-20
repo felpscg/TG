@@ -139,8 +139,8 @@ class vaga {
 
                         $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
                         $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
-                        echo "<div class='vaga $estadovaga'><input type='radio' style=' display: none;' value='$numerovaga' name='v-radio' id='v$numerovaga-radio' onclick='calendarioData(0);'/>
-                        <label for='v$numerovaga-radio'><span>$numerovaga</span><br><span>E:$hrentrada</span><br><span>S:$hrsaida</span></label></div>";
+                        echo "<div class='vaga $estadovaga'>
+                        <span>$numerovaga</span><br><span>E:$hrentrada</span><br><span>S:$hrsaida</span></div>";
                     }
                     echo  "</div>
                 <div id='bloco-s'>
@@ -162,8 +162,8 @@ class vaga {
                         $estadovaga = ($estadovaga == 0) ? 'livre' : (($estadovaga == 1) ? 'reservado' : 'ocupado');
                         $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
                         $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
-                        echo "<div class='vaga $estadovaga'><input type='radio' style=' display: none;' value='$ii' name='v-radio' id='v$ii-radio' onclick='calendarioData(0);'/>
-                        <label for='v$ii-radio'><span>E:$hrentrada</span><br><span>S:$hrsaida</span><br><span>$ii</span></label></div>";
+                        echo "<div class='vaga $estadovaga'>
+                        <span>E:$hrentrada</span><br><span>S:$hrsaida</span><br><span>$ii</span></div>";
                     }
 //                    for ($i = 0; $i < 10; $i++) {
 //                        echo "<div class='vaga'></div>";

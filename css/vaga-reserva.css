@@ -6,12 +6,12 @@
 
 
 body{
-    width: 1349px;
+    /*width: 1349px;*/
     font-family: aegean;
     /*font-size: 1.5em !important;*/
 }
 footer{
-    width: 1349px;
+    width: 100%;
     font-size: 1.2em;
 }
 #legenda{
@@ -19,7 +19,7 @@ footer{
     margin-top: 2em;
     top:0em;
     width: 50%;
-    height: 1em;
+    height: 0.62em;
     left: 2%;
     /*border: solid 1px #000;*/
 }

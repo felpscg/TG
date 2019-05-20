@@ -18,6 +18,7 @@ a:visited, a:after, a:before,a:link{
     float:bottom;
     margin-top: 2.9em;
     width:90%;
+    min-height: 21.4em;
     left:5%;
     background-color: #fff;
 }
