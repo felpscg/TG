@@ -83,7 +83,8 @@ class htmlHeader {
 
     function headInicial() {
 //        $root = $_SERVER['DOCUMENT_ROOT'];
-        echo "<html>\n" .
+        echo "<!DOCTYPE html> \n"
+        . "<html>\n" .
         "<head>\n" .
         "<meta charset='UTF-8'>\n" .
         "<link rel='shortcut icon' href='../img/parking-ib.png'>" .

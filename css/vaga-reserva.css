@@ -11,8 +11,24 @@ body{
     /*font-size: 1.5em !important;*/
 }
 footer{
+    position: relative;
+    top:0.1em;
+    margin-top:-0.7em;
+    background-color: #f0f0f0;
     width: 100%;
-    font-size: 1.2em;
+    font-size: 1.3em;
+    height: 2.2em;
+    padding-top: 0.1em;
+    background-repeat:no-repeat;
+    z-index:58;
+}
+#textrod{
+    position: relative;
+    width: 20%;
+    height: auto;
+    top:1.6em;
+    left: 50%;
+    margin-left: -4em;
 }
 #legenda{
     position: relative;
@@ -72,10 +88,20 @@ footer{
     color:#000;
     font-size: 0.8em;
 }
-
+#diareservado{
+    position: fixed;
+    bottom: 35%;
+    right: 5%;
+    margin: 13.8px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-right: 3px solid #0089bb;
+    background-color: #fff;
+    color:#000;
+    z-index:777;
+}
 #problema{
     position: fixed;
-    bottom: 5%;
+    bottom: 7.55%;
     right: 5%;
     margin: 13.8px 4px 8px 6px !important;
     padding: 0px 12px 0px 10px;
@@ -258,6 +284,31 @@ footer{
                 background-color: #fff;
                 z-index: 444;
             }*/
+#cancelareserva{
+    position: fixed;
+    bottom: 15%;
+    right: 5%;
+    display: block;
+    margin: 13.8px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-top: 3px solid #08bdff;
+    border-bottom: 3px solid #08bdff;
+    background-color: #0089bb;
+    color:#fff;
+    font-size: 1em;
+    cursor:pointer;
+    color: #000;
+    z-index: 2000;
+}
+#cancelareserva:hover{
+    margin: 13.8px 4px 8px 6px !important;
+    padding: 0px 12px 0px 10px;
+    border-top: 3px solid #0ac;
+    border-bottom: 3px solid #0ac;
+    background-color: #19c;
+    color:#dfdfdf;
+    transition:all ease 0.3s;
+}
 #avancarCal{
     position: fixed;
     font-family: aegean;

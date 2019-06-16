@@ -7,8 +7,10 @@
  * Criado em 11/01/2019
  */
 class reserva {
+
     function __construct() {
         echo ""
+        . " <form action = '#' method = 'POST'>\n"
         . "    <!------------------------->
 
         <div id='tempo-IO' >
@@ -23,35 +25,36 @@ class reserva {
                 </div>
             </div>
         </div>
+        
         <div id='fundo-p' >";
-            
-            require '../class/calendario.php';
-            echo "<div id='meses'>";
-            echo "<div class='mes'>";
-            $mesAtual = date("m");
-            $arrayMesAtual = str_split($mesAtual);
-            if (intval($mesAtual) < 9) {
-                $arrayMesAtual[1] ++;
-            } else if (intval($mesAtual) == 9) {
-                $arrayMesAtual[0] ++;
-                $arrayMesAtual[1] = 0;
-            } else if (intval($mesAtual) > 9 && intval($mesAtual) <= 11) {
-                $arrayMesAtual[1] ++;
-            } else if (intval($mesAtual) > 9 && intval($mesAtual) <= 11) {
-                $arrayMesAtual[0] = 0;
-                $arrayMesAtual[1] = 1;
-            }
 
-            $proximoMes = implode("", $arrayMesAtual);
-            MostreCalendario($mesAtual);
-            echo "</div>";
-            echo "<div class='mes'>";
-            MostreCalendario($proximoMes);
+        require '../class/calendario.php';
+        echo "<div id='meses'>";
+        echo "<div class='mes'>";
+        $mesAtual = date("m");
+        $arrayMesAtual = str_split($mesAtual);
+        if (intval($mesAtual) < 9) {
+            $arrayMesAtual[1] ++;
+        } else if (intval($mesAtual) == 9) {
+            $arrayMesAtual[0] ++;
+            $arrayMesAtual[1] = 0;
+        } else if (intval($mesAtual) > 9 && intval($mesAtual) <= 11) {
+            $arrayMesAtual[1] ++;
+        } else if (intval($mesAtual) > 9 && intval($mesAtual) <= 11) {
+            $arrayMesAtual[0] = 0;
+            $arrayMesAtual[1] = 1;
+        }
 
-            echo "</div>"
-            . "</div>";
-            
-            echo "</div>
+        $proximoMes = implode("", $arrayMesAtual);
+        MostreCalendario($mesAtual);
+        echo "</div>";
+        echo "<div class='mes'>";
+        MostreCalendario($proximoMes);
+
+        echo "</div>"
+        . "</div>";
+
+        echo "</div>
         <div id='fundo-s'></div>
         <input type='hidden' id='diamesin' value=0 />
 
@@ -117,73 +120,81 @@ class reserva {
             </div>
             <div id='estacionamento'>
                 <div id='bloco-p'>";
-                    
-                    require '../class/conBD.php';
+
+        require '../class/conBD.php';
 //                    session_start();
 //                    $login = $_SESSION["login"];
 //                    $senhaMd5 = $_SESSION["senhamd5"];
 //                    session_abort();
-                    $conbd = new conBD;
-                    $linkBD = $conbd->conectarBD("Falha");
+        $conbd = new conBD;
+        $linkBD = $conbd->conectarBD("Falha");
 
-                    $vagaSql = "SELECT * FROM (SELECT tg.vagas.pknmvaga, tg.vagas.numerovaga, tg.vagas.estadovaga, TIME_FORMAT(tg.reservas.hrentrada, '%H:%i') AS hrentrada,  TIME_FORMAT(tg.reservas.hrsaida, '%H:%i') AS hrsaida FROM tg.vagas LEFT join tg.reservas ON tg.reservas.fkvaga = tg.vagas.numerovaga) AS teste where teste.pknmvaga <12 GROUP BY numerovaga order BY numerovaga ASC; ";
-                    $mvagaSql = "SELECT tg.vagas.pknmvaga AS vaga  FROM tg.vagas, tg.reservas WHERE tg.reservas.fkvaga = tg.vagas.pknmvaga AND tg.reservas.fkusuario = 2";
+        $vagaSql = "SELECT * FROM (SELECT tg.vagas.pknmvaga, tg.vagas.numerovaga, tg.vagas.estadovaga, TIME_FORMAT(tg.reservas.hrentrada, '%H:%i') AS hrentrada,  TIME_FORMAT(tg.reservas.hrsaida, '%H:%i') AS hrsaida FROM tg.vagas LEFT join tg.reservas ON tg.reservas.fkvaga = tg.vagas.numerovaga) AS teste where teste.pknmvaga <12 GROUP BY numerovaga order BY numerovaga ASC; ";
+        $mvagaSql = "SELECT tg.vagas.pknmvaga AS vaga  FROM tg.vagas, tg.reservas WHERE tg.reservas.fkvaga = tg.vagas.pknmvaga AND tg.reservas.fkusuario = 2";
 
 
 
-                    $result = mysqli_query($linkBD, $vagaSql);
-                    $resultM = mysqli_fetch_assoc(mysqli_query($linkBD, $mvagaSql));
+        $result = mysqli_query($linkBD, $vagaSql);
+        $resultM = mysqli_fetch_assoc(mysqli_query($linkBD, $mvagaSql));
 //                    echo $resultM['vaga'];
-                    for ($i = 1; $i <= mysqli_num_rows($result); $i++) {
-                        $registro = mysqli_fetch_assoc($result);
-                        foreach ($registro as $key => $value) {
-                            $comando = "\$" . $key . "='" . $value . "';";
+        for ($i = 1; $i <= mysqli_num_rows($result); $i++) {
+            $registro = mysqli_fetch_assoc($result);
+            foreach ($registro as $key => $value) {
+                $comando = "\$" . $key . "='" . $value . "';";
 //                            echo "$comando";
-                            eval($comando);
-                        }
-                        $estadovaga = ($numerovaga == $resultM['vaga']) ? 'm-reserva' : (($estadovaga == 0) ? 'livre' : (($estadovaga == 1) ? 'reservado' : (($estadovaga == 2) ? 'ocupado' : "incorreto")));
+                eval($comando);
+            }
+            $estadovaga = ($numerovaga == $resultM['vaga']) ? 'm-reserva' : (($estadovaga == 0) ? 'livre' : (($estadovaga == 1) ? 'reservado' : (($estadovaga == 2) ? 'ocupado' : "incorreto")));
 
-                        $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
-                        $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
-                        echo "<div class='vaga $estadovaga'><input type='radio' style=' display: none;' value='$numerovaga' name='v-radio' id='v$numerovaga-radio' onclick='calendarioData(0);'/>
+            $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
+            $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
+            echo "<div class='vaga $estadovaga'><input type='radio' style=' display: none;' value='$numerovaga' name='v-radio' id='v$numerovaga-radio' onclick='calendarioData(0);'/>
                         <label for='v$numerovaga-radio'><span>$numerovaga</span><br><span>E:$hrentrada</span><br><span>S:$hrsaida</span></label></div>";
-                    }
-                    echo  "</div>
+        }
+        echo "</div>
                 <div id='bloco-s'>
 
                 </div>
                 <div id='bloco-t'>";
-                    
-                    $result = mysqli_query($linkBD, "SELECT * FROM (SELECT tg.vagas.pknmvaga, tg.vagas.numerovaga, tg.vagas.estadovaga, TIME_FORMAT(tg.reservas.hrentrada, '%H:%i') AS hrentrada,  TIME_FORMAT(tg.reservas.hrsaida, '%H:%i') AS hrsaida FROM tg.vagas LEFT join tg.reservas ON tg.reservas.fkvaga = tg.vagas.numerovaga) AS teste where teste.pknmvaga >=12 GROUP BY numerovaga order BY numerovaga ASC; ");
-                    for ($i = 1; $i <= mysqli_num_rows($result); $i++) {
-                        $registro = mysqli_fetch_assoc($result);
-                        foreach ($registro as $key => $value) {
-                            $comando = "\$" . $key . "='" . $value . "';";
+
+        $result = mysqli_query($linkBD, "SELECT * FROM (SELECT tg.vagas.pknmvaga, tg.vagas.numerovaga, tg.vagas.estadovaga, TIME_FORMAT(tg.reservas.hrentrada, '%H:%i') AS hrentrada,  TIME_FORMAT(tg.reservas.hrsaida, '%H:%i') AS hrsaida FROM tg.vagas LEFT join tg.reservas ON tg.reservas.fkvaga = tg.vagas.numerovaga) AS teste where teste.pknmvaga >=12 GROUP BY numerovaga order BY numerovaga ASC; ");
+        for ($i = 1; $i <= mysqli_num_rows($result); $i++) {
+            $registro = mysqli_fetch_assoc($result);
+            foreach ($registro as $key => $value) {
+                $comando = "\$" . $key . "='" . $value . "';";
 //                            echo "$comando";
 
-                            eval($comando);
-                        }
+                eval($comando);
+            }
 
-                        $ii = $i + 12;
-                        $estadovaga = ($estadovaga == 0) ? 'livre' : (($estadovaga == 1) ? 'reservado' : 'ocupado');
-                        $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
-                        $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
-                        echo "<div class='vaga $estadovaga'><input type='radio' style=' display: none;' value='$ii' name='v-radio' id='v$ii-radio' onclick='calendarioData(0);'/>
+            $ii = $i + 12;
+            $estadovaga = ($estadovaga == 0) ? 'livre' : (($estadovaga == 1) ? 'reservado' : 'ocupado');
+            $hrentrada = ($hrentrada != '' || $hrentrada != null) ? $hrentrada : '&emsp;-&emsp;';
+            $hrsaida = ($hrsaida != '' || $hrsaida != null) ? $hrsaida : '&emsp;-&emsp;';
+            echo "<div class='vaga $estadovaga'><input type='radio' style=' display: none;' value='$ii' name='v-radio' id='v$ii-radio' onclick='calendarioData(0);'/>
                         <label for='v$ii-radio'><span>E:$hrentrada</span><br><span>S:$hrsaida</span><br><span>$ii</span></label></div>";
-                    }
+        }
 //                    for ($i = 0; $i < 10; $i++) {
 //                        echo "<div class='vaga'></div>";
 //                    }
-                    echo "<div class='vaga ' style='width: 20.7em !important; border:transparent !important; background-color:transparent!important; '></div>
+        echo "<div class='vaga ' style='width: 20.7em !important; border:transparent !important; background-color:transparent!important; '></div>
 
                 </div>
             </div>
             <a href='problema.php'><div id='problema'><span>Relatar Problema</span>
-            </div></a></div>
-<p style='position:relative;width:20%;min-heigth:0.1em;background-color:#000;display:block;font-size:0.12em;'><br></p>
+            </div></a>
+            <a href='problema.php'><div id='cancelareserva'><span>Cancelar Reserva</span>
+            </div></a>
+            <div id='diareservado'><span>Data: 27/05/2019</span>
+            </div>            
+            </div>
+        <p style='position:relative;width:20%;min-heigth:0.1em;background-color:#000;display:block;font-size:0.12em;'><br></p>
         <span id='cancelar' onclick='history.go(0)'>X</span>
         <span id='localvaga'>A</span>
         <span id='diareserva'>B</span>
-        <button id='avancarCal' value='0' onclick='calendarioData(this.value);' >Avançar</button>";
+        <input type='hidden' name='est' value='cad'/>
+        <button id='avancarCal' value='0' onclick='calendarioData(this.value);' >Avançar</button>
+        </form>";
     }
+
 }

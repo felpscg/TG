@@ -18,7 +18,7 @@ class problema {
 <div id='corpo' >
     <form id='formp' name='formp' method='POST' action='#'>
         <fieldset>
-            <legend>Login</legend>
+            <legend>Relatar problema</legend>
             <div class='campo'>
                 <div class='nome-campo'>
                     <p><span>Assunto:*</span></p>
@@ -29,8 +29,8 @@ class problema {
                     <p><textarea name='descricao' rows='5' cols='40' maxlength='400'></textarea></p>
 
                 </div>
-                <p>
-                    <input type='button' value='Prosseguir' onclick='submit();'/></p>
+                <p >
+                    <input style='margin-top:3em;' type='button' name='problema' value='Prosseguir' onclick='submit();'/></p>
             </div>
         </fieldset>
     </form>

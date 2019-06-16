@@ -174,7 +174,8 @@ class vaga {
             </div>
             <a href='problema.php'><div id='problema'><span>Relatar Problema</span>
             </div></a></div>
-<p style='position:relative;width:20%;min-heigth:0.1em;background-color:#000;display:block;font-size:0.12em;'><br></p>
+            
+        <p style='position:relative;width:20%;min-heigth:0.1em;background-color:#000;display:block;font-size:0.12em;'><br></p>
         <span id='cancelar' onclick='history.go(0)'>X</span>
         <span id='localvaga'>A</span>
         <span id='diareserva'>B</span>

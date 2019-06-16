@@ -163,8 +163,12 @@ class clientesDAO {
             $local = ", '$tel[localtel]'";
             $campoLocal = ", `local`";
         }
-
-        $query = "INSERT INTO `tg`.`telefones` (`ddd`, `telefone`, `tipo`$campoLocal) VALUES ('$tel[ddd]', '$tel[telefone]', '$tel[tipotel]'$local);";
+//        $tel[ddd]', '$tel[telefone]
+        $telefone = substr($tel['telefone'], 0, 2);
+        echo $telefone;
+        exit(0);
+        $ddd;
+        $query = "INSERT INTO `tg`.`telefones` (`ddd`, `telefone`) VALUES ('$ddd', '$telefone');";
 //        echo $query;
         mysqli_query($con, $query) or die("Erro ao inserir Telefone");
         unset($tel, $dadosTelefone);
