@@ -26,46 +26,14 @@ class perfil {
         . " <p><span>CPF:*</span></p>\n"
         . " <p><span>RG:*</span></p>\n"
         . " <p><span>Data de Nascimento:*</span></p>\n"
-        . " <p><span>DDD:*</span></p>\n"
         . " <p><span>Telefone/ Celular:*</span></p>\n"
-        . " <p><span>Tipo:*</span></p>\n"
-        . " <p><span>Local:*</span></p>\n"
         . " </div>\n"
         . " <div class = 'item-campo'>\n"
         . " <p><input type = 'text' name = 'nome'           value='$registro[nome]' /></p>\n"
         . " <p><input type = 'text' name = 'cpf'            value='$registro[cpf]' oninput = 'TestaCPF();'/></p>\n"
         . " <p><input type = 'text' name = 'rg'             value='$registro[rg]' /></p>\n"
         . " <p><input type = 'date' name = 'datanascimento' value='$registro[datanasc]' /></p>\n"
-        . " <p><input type = 'text' name = 'ddd'            value='$registro[ddd]' /></p>\n"
-        . " <p><input type = 'text' name = 'telefone'       value='$registro[telefone]' /></p>\n"
-        . " <p><select name = 'tipotel' id = 'tipotel'' >\n"
-        . " <option value = 'celular' select=";
-        if ($registro["tipo"] == 'celular')
-            echo 'select';
-        echo ">Celular</option>\n"
-        . " <option value = 'telefone'                      select=";
-        if ($registro["tipo"] == 'telefone')
-            echo 'select';
-        echo ">Telefone</option>\n"
-        . " <option value = 'outros'                        select=";
-        if ($registro["tipo"] == 'outros')
-            echo 'select';
-        echo ">Outros</option>\n"
-        . "</select></p>"
-        . " <p><select name = 'localtel' id = 'localtel'>\n"
-        . " <option value = 'principal' disabled = 'disabled'>Selecione</option>\n"
-        . " <option value = 'principal' select=";
-        if ($registro["local"] == 'principal')
-            echo 'select';
-        echo ">Principal</option>\n"
-        . " <option value = 'residencial' select=";
-        if ($registro["local"] == 'residencial')
-            echo 'select';
-        echo ">Residencial</option>\n"
-        . " <option value = 'outros' select=";
-        if ($registro["local"] == 'outros')
-            echo 'select';
-        echo ">Outros</option>\n"
+        . " <p><input type = 'text' name = 'telefone'       value='$registro[ddd]$registro[telefone]' /></p>\n"
         . "</select></p>"
         . " </div>\n"
         . " </div>\n"

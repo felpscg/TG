@@ -85,9 +85,9 @@ function MostreCalendario($mes) {
                 if ($coluna < $diasemana && $linha == 0) {
                     echo " ";
                 } else {
-                    // echo "<input type = 'button' id = 'dia_comum' name = 'dia".($diacorrente+1)."'  value = '".++$diacorrente."' onclick = "acao(this.value)">";
-                    //echo "<a href = " . $_SERVER["PHP_SELF"] . "?mes=$mes&dia=" . ($diacorrente + 1) . ">" . ++$diacorrente . "</a>";
-                    echo "<input type='radio' name='diames' id='mes-".$mes."dia".($diacorrente+1)."' value=$mes-".($diacorrente+1)." onclick='calendarioData(1);setDataDiaMes(this.value);'>";
+                    $dia=(($diacorrente+1)>=10)?($diacorrente+1):("0".($diacorrente+1));
+                    
+                    echo "<input type='radio' name='diames' id='mes-".$mes."dia".($diacorrente+1)."' value=". date('Y')."-".$mes."-".$dia." onclick='calendarioData(1);setDataDiaMes(this.value);'>";
                     
                     echo "<label id='mesdialabel' for='mes-".$mes."dia".($diacorrente+1)."'>" . ++$diacorrente . "</label>";
                     

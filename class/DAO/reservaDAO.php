@@ -8,11 +8,13 @@ class reservaDAO {
         }
         switch ($op) {
             case 1:
-                $this->incluirReserva($con);
+                $this->incluirFim($con);
                 break;
+
             case 2:
                 $this->excluirReserva($con);
                 break;
+
             default:
                 echo 'Ação não encontrada';
                 break;
@@ -22,6 +24,7 @@ class reservaDAO {
     function incluirReserva($con) {
         session_start();
         $dadosReserva = $_POST;
+
         $res = $dadosReserva;
         foreach ($res as $key => $value) {
             echo 'Var - ' . $key;
@@ -32,23 +35,15 @@ class reservaDAO {
         $values = array();
         if (!($this->validaUnico($login, 'fkusuario', $con))) {
             echo 'Ja existe uma reserva para esse usuário';
-            
-        }
+        }//Verifica se ja foi efetuado Reserva no mesmo ID
 
-        
+
         if (!($this->validaUnico($res['v-radio'], 'fkvaga', $con))) {
             echo 'Vaga preenchida por outro usuário';
             exit(0);
-        }
-        exit(0);
-        if (!($this->validaUnico($usr['v-radio'], 'fkvaga', $con))) {
-            echo 'Vaga preenchida por outro usuário';
-            exit(0);
-        }
+        }//Verifica se ja foi feito reserva da vaga coincidente com o horário
 
         $idEndereco = $this->inserirEndereco($dadosReserva, $con);
-        $idTelefone = $this->inserirTelefone($dadosReserva, $con);
-        $idCarro = $this->inserirVeiculo($dadosReserva, $con);
 
         $campoRg = '';
         $rg = '';
@@ -74,8 +69,14 @@ class reservaDAO {
         switch ($campo) {
             case "fkvaga":
                 //      Valida vaga com horário de outra reserva na mesma vaga
-                $vaga = $_POST["v-radio"];
-                echo $query = "SELECT `fkvaga` FROM `tg`.`reservas` WHERE reservas.fkvaga = '$vaga' AND NOT reservas.fkusuario = '3';";
+                $vaga = $dadosCampo;
+                $login = $_SESSION["login"];
+                echo $query = "SELECT * FROM reservas WHERE reservas.dataentrada = '$_POST[diames]' "
+                . "AND NOT reservas.fkusuario = ("
+                . "SELECT usuarios.pkusuario FROM usuarios WHERE "
+                . "usuarios.cpf = '$login' OR usuarios.email = '$login') "
+                . "AND '$_POST[hrentrada]:00' BETWEEN reservas.hrentrada AND reservas.hrsaida "
+                . "AND reservas.fkvaga = $vaga;";
                 exit(0);
 //                --------------------
                 $query = "SELECT `pkusuario` FROM `tg`.`usuarios` WHERE `email` = '$dadosCampo' OR `cpf` = '$dadosCampo';";
@@ -98,17 +99,7 @@ class reservaDAO {
                     return true;
                 }
                 break;
-            case "fkreserva":
-                $query = "SELECT `pkusuario` FROM `tg`.`reservas` WHERE `fkvaga` = '$dadosCampo';";
-                $result = mysqli_query($con, $query);
-                if (mysqli_num_rows($result) > 0) {
 
-//                    
-                    return false;
-                } else {
-                    return true;
-                }
-                break;
             case "fkusuario":
                 $query = "SELECT `pkusuario` FROM `tg`.`usuarios` WHERE `email` = '$dadosCampo' OR `cpf` = '$dadosCampo';";
 
@@ -130,22 +121,61 @@ class reservaDAO {
                     return true;
                 }
                 break;
-            case "hrentrada":
-                echo $_POST['diames'];
-                exit(0);
-                $query = "SELECT * FROM reservas WHERE '$dadosCampo' BETWEEN reservas.hrentrada AND reservas.hrsaida AND reservas.dataentrada = '2019-06-15'";
-                $result = mysqli_query($con, $query);
-                if (mysqli_num_rows($result) > 0) {
-                    return false;
-                } else {
-                    return true;
-                }
 
-                break;
             default:
+                echo 'Erro interno - Recarregue a página.';
+                exit(0);
                 break;
         }
     }
 
 //      Valida Reserva com o mesmo usuário
+
+
+
+    function incluirFim($con) {
+        session_start();
+        $dadosReserva = $_POST;
+
+        $res = $dadosReserva;
+//        foreach ($res as $key => $value) {
+//            echo 'Var - ' . $key;
+//            echo ' -- Value - ' . $value . '<br>';
+//        }
+
+        $login = $_SESSION["login"];
+        $vaga = $res["v-radio"];
+        $queryLogin = "SELECT usuarios.pkusuario FROM usuarios WHERE usuarios.cpf = '$login' OR usuarios.email = '$login';";
+        $registro = mysqli_fetch_assoc(mysqli_query($con, $queryLogin));
+        $queryVerifica = "SELECT reservas.pkreserva, reservas.fkvaga FROM reservas WHERE reservas.fkusuario = '$registro[pkusuario]';";
+//        echo $queryVerifica;
+//        exit();
+        $resultVerifica = mysqli_query($con, $queryVerifica);
+        $resultVerificaReg = mysqli_fetch_assoc(mysqli_query($con, $queryVerifica));
+        echo $resultVerificaReg["pkreserva"];
+//        exit(0);
+        $query = "";
+        $queryt = "";
+        $vagaANT= $resultVerificaReg["fkvaga"];
+        if (isset($resultVerificaReg["pkreserva"])) {
+            $query = "UPDATE `tg`.`reservas` SET `hrentrada`='$res[hrentrada]:00', `hrsaida`='$res[hrsaida]:00', `dataentrada`='$res[diames]:00', `fkvaga`='$vaga' WHERE reservas.fkusuario = $registro[pkusuario]; ";
+            $queryt=" UPDATE `tg`.`vagas` SET `vagas`.`estadovaga`='1' WHERE `vagas`.numerovaga='$vaga'";
+            $queryq=" UPDATE `tg`.`vagas` SET `vagas`.`estadovaga`='0' WHERE `vagas`.numerovaga='$vagaANT'";
+            mysqli_query($con, $queryq);
+//            echo $query;
+//            exit(0);
+            
+        } else {
+            $query = "INSERT INTO `tg`.`reservas` (`hrentrada`, `hrsaida`, `dataentrada`, `fkvaga`, `fkusuario`) VALUES ('$res[hrentrada]:00', '$res[hrsaida]:00', '$res[diames]', '$vaga', '$registro[pkusuario]');";
+            $queryt=" UPDATE vagas SET `vagas`.estadovaga='1' WHERE `vagas`.numerovaga='$vaga'";
+            
+        }
+//        echo $query;
+//        exit();
+        mysqli_query($con, $query);
+        mysqli_query($con, $queryt);
+        header('location:./reserva.php');
+        session_abort();
+    }
+
 }

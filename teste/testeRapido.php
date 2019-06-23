@@ -1,2 +1,2 @@
 <?php
-echo __DIR__;
+echo date('Y-m-d');

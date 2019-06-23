@@ -30,6 +30,7 @@ class problema {
 
                 </div>
                 <p >
+                <input type='hidden' name='est' value='cad'/>
                     <input style='margin-top:3em;' type='button' name='problema' value='Prosseguir' onclick='submit();'/></p>
             </div>
         </fieldset>

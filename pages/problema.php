@@ -13,6 +13,21 @@ require_once './cont/problema.php';
 session_abort();
 
 $header = new htmlHeader();
+
+if (isset($_POST['est'])) {
+
+    require_once $root . '/class/conBD.php';
+    $BD = new conBD();
+    $con = $BD->conectarBD("Falha ao conectar, erro na instrução SQL");
+    require_once $root . '/class/DAO/problemaDAO.php';
+    if ($_POST['est'] == "cad") {
+        $op = 1;
+        $obj = new problemaDAO($op, $con);
+        $BD->finalizarBD($con);
+    }
+}
+
+
 $menu = new menuPrincipal(4);
 ?>
 
